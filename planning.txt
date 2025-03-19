@@ -1,0 +1,19 @@
+17.03.2025 
+ - core is ready, basic registration\login, posting articles, editing articles etc.
+
+
+- TODO
+ 1) Steam API integration 
+  - once article is created Steam API should be contacted 
+    and all the data for that game should be pulled - game screenshots, score, PC reqs etc.
+    -  game Steam ID could be provided when article is posted
+    -  alternatively, it could be a process of storing all the data beforehand, assuming, 
+       that games that are going to be reviewed are known already.
+ 2) Upload screenshots (jpg, png files) to attach to the article
+ 3) Add website`s review score fields 
+ 4) relevant youtube video field (for trailers etc)
+ 5) ability to sort "All Reviews" according to score
+ 6) ability to filter "All Reviews" according to genre tags
+ 7) invite links for new users to register as authors OR just admin giving rights to users ???
+ 8) admin dashboard 
+ 9) editor role

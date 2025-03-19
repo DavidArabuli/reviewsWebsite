@@ -1,0 +1,1 @@
+<button {{$attributes->merge(['class'=>'', 'type'=>'submit'])}}>{{$slot}}</button>

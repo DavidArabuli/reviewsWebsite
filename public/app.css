@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+    background: gainsboro;
+}
+
+.active {
+    border: 1px solid grey;
+    color:red;
+}
+.default_link {
+color: blue;
+}
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.pagination-link {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.pagination-link:hover {
+    background-color: #0056b3;
+}
+
+.activePagination {
+    font-weight: bold;
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+}
+
+.disabled {
+    padding: 8px 12px;
+    color: gray;
+}
+.button{
+    border: 1px solid grey;
+    background-color: antiquewhite;
+}
+div{
+    margin-top: 1rem;
+}
+.error{
+    color: red;
+}
