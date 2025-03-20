@@ -44,6 +44,7 @@ Route::get('/contact', function () {
     return view('contact');
 });
 Route::get('/admin', [AdminController::class, 'index'])->middleware(AdminMiddleware::class)->name('admin.dashboard');
+Route::get('/user/{user}', [AdminController::class, 'user'])->middleware(AdminMiddleware::class);
 
 Route::get('/register', [RegisteredUserController::class, 'create']);
 
