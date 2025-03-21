@@ -11,31 +11,7 @@ class AdminController extends Controller
     {
 
         return view(
-            'admin.admin-dashboard',
-            [
-                $users = $this->getUsers(),
-                'users' => $users,
-                $editors = $this->getEditors(),
-                'editors' => $editors,
-            ]
-        );
-    }
-    public function getUsers()
-    {
-        return User::all();
-    }
-    public function getEditors()
-    {
-        return User::where('is_editor', 1)->get();
-    }
-    public function user(User $user)
-    {
-
-        return view(
-            'user.user',
-            [
-                'user' => $user
-            ]
+            'admin.admin-dashboard'
         );
     }
 }

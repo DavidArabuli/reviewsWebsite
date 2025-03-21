@@ -17,3 +17,9 @@
  7) invite links for new users to register as authors OR just admin giving rights to users ???
  8) admin dashboard 
  9) editor role
+
+ 18-21.03
+ - admin panel functionality and roles
+ - there is admin, editor\moderator, and author.
+  admin should have full access and ability to add\remove editors and authors,
+  editor can edit author`s articles

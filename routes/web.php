@@ -5,11 +5,12 @@ use App\Jobs\TranslateJob;
 use App\Mail\ReviewPosted;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\RegisteredUserController;
-use App\Http\Controllers\AdminController;
-use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\UserManagementController;
 
 Route::get('test', function () {
     $review = Review::first();
@@ -43,8 +44,20 @@ Route::controller(ReviewController::class)->group(function () {
 Route::get('/contact', function () {
     return view('contact');
 });
-Route::get('/admin', [AdminController::class, 'index'])->middleware(AdminMiddleware::class)->name('admin.dashboard');
-Route::get('/user/{user}', [AdminController::class, 'user'])->middleware(AdminMiddleware::class);
+
+Route::middleware([AdminMiddleware::class])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+
+    Route::prefix('admin/users')->name('admin.users.')->group(function () {
+        Route::get('/', [UserManagementController::class, 'index'])->name('index');
+        Route::get('/{user}', [UserManagementController::class, 'show'])->name('show');
+        Route::get('/{user}/edit', [UserManagementController::class, 'edit'])->name('edit');
+        Route::patch('/{user}', [UserManagementController::class, 'update'])->name('update');
+        Route::delete('/{user}', [UserManagementController::class, 'destroy'])->name('destroy');
+    });
+});
+
+
 
 Route::get('/register', [RegisteredUserController::class, 'create']);
 
