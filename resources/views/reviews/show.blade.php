@@ -10,6 +10,9 @@
     <br>
     this review`s content is {{$review->content}}
     <br>
+    <br>
+    this review`s score is {{$review->score}}
+    <br>
     @can('edit', $review)
     <x-button href='/reviews/{{$review->id}}/edit'>Edit review</x-button>
     @endcan

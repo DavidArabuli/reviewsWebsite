@@ -8,9 +8,14 @@ use Illuminate\Auth\Access\Response;
 
 class ReviewPolicy
 {
+    public function create(User $user): bool
+    {
+        return true;
+    }
+
     public function edit(User $user, Review $review): bool
     {
-        if ($review->author->user->is($user)) {
+        if ($review->user->is($user)) {
             return true;
         }
         return $user->is_editor;
@@ -34,10 +39,7 @@ class ReviewPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
-    {
-        return false;
-    }
+
 
     /**
      * Determine whether the user can update the model.

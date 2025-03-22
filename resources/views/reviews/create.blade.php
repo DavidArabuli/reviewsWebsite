@@ -19,6 +19,13 @@
                 <x-form-error name='content'/>
             </div>
         </x-form-field>
+        <x-form-field>
+            <div>
+                <x-form-label for="score">review score</x-form-label>
+                <x-form-input id="score" name="score" type="text"></x-form-input>
+                <x-form-error name='score'/>
+            </div>
+        </x-form-field>
         
         <x-form-button >Save</x-form-button>
     </form>

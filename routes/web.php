@@ -23,9 +23,9 @@ Route::view('/', 'welcome');
 Route::controller(ReviewController::class)->group(function () {
 
 
-    Route::get('/reviews', 'index');
+    Route::get('/reviews', 'index')->name('reviews.index');
 
-    Route::get('/reviews/create', 'create');
+    Route::get('/reviews/create', 'create')->middleware('auth');
 
     Route::post('/reviews', 'store')->middleware('auth');
 

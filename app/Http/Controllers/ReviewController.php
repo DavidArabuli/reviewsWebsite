@@ -14,8 +14,9 @@ class ReviewController extends Controller
 {
     public function index()
     {
+        $sort = request('sort', 'desc');
         return view('reviews.index', [
-            $reviews = Review::with('author')->latest()->paginate(5),
+            $reviews = Review::with('user')->orderBy('score', $sort)->paginate(10),
             'reviews' => $reviews
         ]);
     }
@@ -33,14 +34,16 @@ class ReviewController extends Controller
         request()->validate([
             'title' => ['required', 'min:3'],
             'content' => ['required'],
+            'score' => ['required'],
 
         ]);
         $review = Review::create([
             'title' => request('title'),
             'content' => request('content'),
-            'author_id' => 1,
+            'score' => request('score'),
+            'user_id' => auth()->id(),
         ]);
-        Mail::to($review->author->user)->queue(
+        Mail::to($review->user)->queue(
             new ReviewPosted($review)
         );
 
@@ -58,6 +61,7 @@ class ReviewController extends Controller
         request()->validate([
             'title' => ['required', 'min:3'],
             'content' => ['required'],
+            'score' => ['required'],
         ]);
         // update and persist
         // $review = Review::findOrFail($id);
@@ -69,6 +73,7 @@ class ReviewController extends Controller
         $review->update([
             'title' => request('title'),
             'content' => request('content'),
+            'score' => request('score'),
         ]);
         return redirect('/reviews/' . $review->id);
     }
