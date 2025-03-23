@@ -15,10 +15,20 @@ class ReviewController extends Controller
     public function index()
     {
         $sort = request('sort', 'desc');
-        return view('reviews.index', [
-            $reviews = Review::with('user')->orderBy('score', $sort)->paginate(10),
-            'reviews' => $reviews
-        ]);
+        $query = Review::with(['user', 'tags']);
+
+
+        if (request()->has('tag')) {
+            $tag = request('tag');
+            $query->whereHas('tags', function ($tagQuery) use ($tag) {
+                $tagQuery->where('name', $tag);
+            });
+        }
+
+
+        $reviews = $query->orderBy('score', $sort)->paginate(10);
+
+        return view('reviews.index', compact('reviews'));
     }
     public function create()
     {

@@ -13,6 +13,11 @@
     <br>
     this review`s score is {{$review->score}}
     <br>
+    @foreach ($review->tags as $tag)
+        <li>
+         <a href="{{route('reviews.index', ['tag' => $tag->name])}}">{{$tag->name}}</a>   
+        </li>
+    @endforeach
     @can('edit', $review)
     <x-button href='/reviews/{{$review->id}}/edit'>Edit review</x-button>
     @endcan
