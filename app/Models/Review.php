@@ -12,7 +12,7 @@ class Review extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'content', 'user_id', 'score'];
+    protected $fillable = ['title', 'content', 'user_id', 'score', 'steam_id'];
     // to disable all "fillable" protection functionality
     // protected $guarded = [];
 

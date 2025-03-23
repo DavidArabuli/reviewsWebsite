@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('content');
             $table->integer('score');
+            $table->integer('steam_id')->nullable();
             $table->timestamps();
         });
     }

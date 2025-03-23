@@ -23,3 +23,10 @@
  - there is admin, editor\moderator, and author.
   admin should have full access and ability to add\remove editors and authors,
   editor can edit author`s articles
+
+  22.03
+   - basic sorting done
+   - redone model "author", which is redundant, user gets roles "is_author\editor",
+
+  23.03
+  - tags and filtering based on tags added

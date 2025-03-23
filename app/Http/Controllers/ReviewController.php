@@ -6,12 +6,14 @@ use App\Models\User;
 use App\Models\Review;
 use App\Mail\ReviewPosted;
 use Illuminate\Http\Request;
+use App\Services\SteamService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
 
 class ReviewController extends Controller
 {
+
     public function index()
     {
         $sort = request('sort', 'desc');
@@ -34,9 +36,14 @@ class ReviewController extends Controller
     {
         return view('reviews.create');
     }
+
     public function show(Review $review)
     {
-        return view('reviews.show', ['review' => $review]);
+        if (isset($review->steam_id)) {
+            $steamService = new SteamService($review->steam_id);
+            $gameImage = $steamService->gamePhoto;
+        };
+        return view('reviews.show', ['review' => $review, 'gameImage' => $gameImage]);
     }
 
     public function store()

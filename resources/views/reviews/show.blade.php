@@ -13,6 +13,11 @@
     <br>
     this review`s score is {{$review->score}}
     <br>
+    <br>
+    this review`s steam ID is {{$review->steam_id}}
+    <br>
+    <img src="{{$gameImage}}" alt="no image">
+    <br>
     @foreach ($review->tags as $tag)
         <li>
          <a href="{{route('reviews.index', ['tag' => $tag->name])}}">{{$tag->name}}</a>   

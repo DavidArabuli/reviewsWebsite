@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\User;
 use App\Models\Review;
+use App\Services\SteamService;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Database\Eloquent\Model;
