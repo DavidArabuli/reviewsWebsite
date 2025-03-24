@@ -30,3 +30,14 @@
 
   23.03
   - tags and filtering based on tags added
+
+  24.03
+  - working on Steam API. 
+    - I believe it is better to pre-load data and save it to DB as a 
+      separate action, instead of contacting API, saving, retrieving 
+      while review is being posted.
+      Therefore, there must be a separate form to get\save all the relevant Steam data, and then simply providing steam app id when
+      you post review, so that it loads steam score, PC reqs from DB, instead of steam API.
+      
+
+    - created Game model (+ controller, migration and factory), for Steam data.

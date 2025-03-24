@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Tag;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Game;
 use App\Models\User;
 use App\Models\Review;
 use Illuminate\Database\Seeder;
@@ -24,5 +25,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Review::factory(20)->create();
+        Game::factory(10)->create();
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Tag;
+use App\Models\Game;
 use App\Models\Review;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -24,6 +25,12 @@ return new class extends Migration
             $table->foreignIdFor(Tag::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
+        Schema::create('game_tag', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(Game::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Tag::class)->constrained()->cascadeOnDelete();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -33,5 +40,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('tags');
         Schema::dropIfExists('review_tag');
+        Schema::dropIfExists('game_tag');
     }
 };

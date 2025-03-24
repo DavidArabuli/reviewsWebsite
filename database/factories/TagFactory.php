@@ -18,7 +18,7 @@ class TagFactory extends Factory
     {
         return [
 
-            'name' => fake()->randomElement(["FPS", "RPG", "Strategy", "Adventure", "Fighting"])
+            'name' => fake()->unique()->randomElement(["FPS", "RPG", "Strategy", "Adventure", "Fighting"])
         ];
     }
 }
