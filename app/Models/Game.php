@@ -11,11 +11,10 @@ class Game extends Model
     /** @use HasFactory<\Database\Factories\GameFactory> */
     use HasFactory;
 
-    // protected $fillable = ['title', 'content', 'user_id', 'score', 'steam_id'];
-    // to disable all "fillable" protection functionality
-    // protected $guarded = [];
+    protected $fillable = ['steam_id', 'title'];
 
-    public function review()
+
+    public function reviews()
     {
         return $this->hasMany(Review::class);
     }

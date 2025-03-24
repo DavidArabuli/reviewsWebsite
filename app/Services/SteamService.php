@@ -16,17 +16,24 @@ class SteamService
     public function __construct($ID)
     {
         $this->appID = $ID;
-        $this->set_image_url($ID);
+        $this->set_image_url($this->appID);
         // $this->set_review_url($ID);
         $this->setImageJson($this->urlImage);
         // $this->setReviewJson($this->urlReview);
     }
 
-    private function set_image_url($ID)
+    private function set_image_url($appID)
     {
-        $this->urlImage = "https://store.steampowered.com/api/appdetails?appids={$ID}";
+        $this->urlImage = "https://store.steampowered.com/api/appdetails?appids={$appID}";
     }
 
+    private function setImageJson($urlImage)
+    {
+
+        $dataImage = Http::withoutVerifying()->get($urlImage)->json();
+        $this->gamePhoto =
+            $dataImage[$this->appID]['data']['header_image'];
+    }
     // private function set_review_url($ID)
     // {
     //     $this->urlReview = "https://store.steampowered.com/appreviews/{$ID}?json=1";
@@ -42,13 +49,7 @@ class SteamService
     //     echo $this->urlImage;
     // }
 
-    private function setImageJson($urlImage)
-    {
 
-        $dataImage = Http::withoutVerifying()->get($urlImage)->json();
-        $this->gamePhoto =
-            $dataImage['1351240']['data']['header_image'];
-    }
     // private function setReviewJson($urlReview)
     // {
     //     $dataReview = Http::get($urlReview)->json();

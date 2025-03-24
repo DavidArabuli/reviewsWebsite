@@ -25,6 +25,7 @@ class ReviewFactory extends Factory
             'title' => fake()->sentence(2),
             'content' => fake()->sentence(5),
             'score' => fake()->numberBetween(1, 10),
+            'steam_id' => fake()->randomElement([2246340, 564530, 451020, 890720]),
         ];
     }
     public function configure()

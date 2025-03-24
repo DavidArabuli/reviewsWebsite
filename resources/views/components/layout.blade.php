@@ -13,6 +13,7 @@
         <x-nav-link href='/' :active="request()->is('/')">Home</x-nav-link>
         <x-nav-link href='/reviews' :active="request()->is('reviews')">reviews</x-nav-link>
         <x-nav-link href='/contact' :active="request()->is('contact')">contact</x-nav-link>
+        <x-nav-link href='/games' :active="request()->is('games')">all games</x-nav-link>
 
         @guest 
         <x-nav-link href='/login' :active="request()->is('login')">login</x-nav-link>

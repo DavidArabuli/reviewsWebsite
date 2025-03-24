@@ -5,6 +5,7 @@ use App\Jobs\TranslateJob;
 use App\Mail\ReviewPosted;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GameController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReviewController;
@@ -37,6 +38,26 @@ Route::controller(ReviewController::class)->group(function () {
     Route::patch('/reviews/{review}', 'update');
 
     Route::delete('/reviews/{review}', 'destroy');
+});
+
+
+Route::controller(GameController::class)->group(function () {
+
+
+    Route::get('/games', 'index')->name('games.index');
+
+    // Route::get('/games/create', 'create')->middleware('auth');
+
+    // Route::post('/games', 'store')->middleware('auth');
+
+    Route::get('/games/{game}', 'show')->name('games.show');
+
+    // Route::get('/games/{game}/edit', 'edit')->middleware('auth')
+    //     ->can('edit', 'game');
+
+    // Route::patch('/games/{game}', 'update');
+
+    // Route::delete('/games/{game}', 'destroy');
 });
 
 // Route::resource('reviews', ReviewController::class);
