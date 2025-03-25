@@ -24,7 +24,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        Review::factory(20)->create();
-        Game::factory(10)->create();
+        $games = Game::factory(10)->create();
+
+
+        Review::factory(10)->create([
+            'game_id' => fn() => $games->random()->id,
+        ]);
     }
 }

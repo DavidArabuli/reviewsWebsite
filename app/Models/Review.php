@@ -24,4 +24,8 @@ class Review extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+    public function game()
+    {
+        return $this->belongsTo(Game::class);
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Game;
 use App\Models\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,6 +16,8 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
+            $table->foreignId('game_id')->nullable()->constrained()->nullOnDelete();
+
             $table->string('title');
             $table->text('content');
             $table->integer('score');

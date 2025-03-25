@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Tag;
+use App\Models\Game;
 use App\Models\User;
 use App\Models\Author;
 use App\Models\Review;
@@ -20,17 +21,22 @@ class ReviewFactory extends Factory
      */
     public function definition(): array
     {
+
         return [
             'user_id' => User::factory(),
+            'game_id' => Game::factory(),
             'title' => fake()->sentence(2),
             'content' => fake()->sentence(5),
             'score' => fake()->numberBetween(1, 10),
-            'steam_id' => fake()->randomElement([2246340, 564530, 451020, 890720]),
+
         ];
     }
     public function configure()
     {
         return $this->afterCreating(function (Review $review) {
+            $review->update([
+                'steam_id' => $review->game->steam_id,
+            ]);
             // Attach random tags (1 to 3 tags per review)
             $tagIds = Tag::inRandomOrder()->limit(rand(1, 5))->pluck('id');
             $review->tags()->attach($tagIds);
