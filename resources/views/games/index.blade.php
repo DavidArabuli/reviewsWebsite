@@ -23,7 +23,10 @@
         <br>
             
         @endforeach
-
-    
+    <br>
+    <p>=====</p>
+    <a href="/games/create">add a new game</a>
+    <p>=====</p>
+    <br>
     
 </x-layout>

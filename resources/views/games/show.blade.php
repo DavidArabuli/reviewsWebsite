@@ -10,6 +10,10 @@
     <br>
     this game`s steam ID is {{$game->steam_id}}
     <br>
+    <br>
+    this game`s steam Pic is following
+    <img src="{{asset($game->image_path)}}" alt="steam image"></img>
+    <br>
     {{-- <img src="{{$gameImage}}" alt="no image"> --}}
     <br>
     {{-- @foreach ($game->tags as $tag)

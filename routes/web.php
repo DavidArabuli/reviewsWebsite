@@ -46,9 +46,9 @@ Route::controller(GameController::class)->group(function () {
 
     Route::get('/games', 'index')->name('games.index');
 
-    // Route::get('/games/create', 'create')->middleware('auth');
+    Route::get('/games/create', 'create')->middleware('auth');
 
-    // Route::post('/games', 'store')->middleware('auth');
+    Route::post('/games', 'store')->middleware('auth');
 
     Route::get('/games/{game}', 'show')->name('games.show');
 
