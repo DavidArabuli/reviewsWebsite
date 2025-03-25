@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('steam_id');
             $table->string('title');
+            $table->string('image_path')->nullable();
             $table->timestamps();
         });
     }

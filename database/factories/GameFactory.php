@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Tag;
 use App\Models\Game;
+use App\Services\SteamService;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,9 +19,12 @@ class GameFactory extends Factory
      */
     public function definition(): array
     {
+        $steamID = fake()->randomElement([451020, 890720, 564530]); // 
+        $steamService = new SteamService($steamID);
         return [
-            'steam_id' => fake()->randomElement([451020, 890720, 564530]),
+            'steam_id' => $steamID,
             'title' => fake()->word(),
+            'image_path' => $steamService->getLocalImgPath(),
 
         ];
     }

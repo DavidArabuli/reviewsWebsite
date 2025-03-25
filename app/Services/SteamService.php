@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 
 class SteamService
 {
@@ -11,6 +12,7 @@ class SteamService
     public $urlReview;
     public $gamePhoto;
     public $reviewScore;
+    public $localPath;
 
 
     public function __construct($ID)
@@ -20,6 +22,7 @@ class SteamService
         // $this->set_review_url($ID);
         $this->setImageJson($this->urlImage);
         // $this->setReviewJson($this->urlReview);
+        $this->downloadImage();
     }
 
     private function set_image_url($appID)
@@ -33,6 +36,21 @@ class SteamService
         $dataImage = Http::withoutVerifying()->get($urlImage)->json();
         $this->gamePhoto =
             $dataImage[$this->appID]['data']['header_image'];
+    }
+
+    private function downloadImage()
+    {
+        if (!$this->gamePhoto) {
+            return;
+        };
+        $imageContent = Http::withoutVerifying()->get($this->gamePhoto)->body();
+        $filename = "steam_games/{$this->appID}.jpg";
+        Storage::disk('public')->put($filename, $imageContent);
+        $this->localPath = 'storage/' . $filename;
+    }
+    public function getLocalImgPath()
+    {
+        return $this->localPath;
     }
     // private function set_review_url($ID)
     // {
