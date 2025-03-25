@@ -41,3 +41,8 @@
       
 
     - created Game model (+ controller, migration and factory), for Steam data.
+
+  25.03
+  Most of steam api interactions are ready to implement. The basis is there. Game controller and steam service work to populate DB.
+  I decided to store data locally, instead of constant request to APi.
+  So, game needs to be added first, and then reviews for this game can be added, with relevant data pulled from local DB.

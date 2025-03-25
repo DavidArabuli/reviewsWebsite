@@ -33,6 +33,20 @@
                 {{$message}}
             @enderror
         </div>
+        <div>
+            <label for="score">score</label>
+            <input 
+            id="score" 
+            name="score" 
+            type="text"
+            value="{{$review->score}}"
+            >
+        </div>
+        <div class="error">
+            @error('score')
+                {{$message}}
+            @enderror
+        </div>
         {{-- <div class="error">
 
             @if($errors->any())

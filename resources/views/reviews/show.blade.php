@@ -16,7 +16,7 @@
     <br>
     this review`s steam ID is {{$review->steam_id}}
     <br>
-    <img src="{{$gameImage}}" alt="no image">
+    <img src="{{asset($image_path)}}" alt="steam image"></img>
     <br>
     @foreach ($review->tags as $tag)
         <li>

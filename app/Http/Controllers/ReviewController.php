@@ -39,11 +39,14 @@ class ReviewController extends Controller
 
     public function show(Review $review)
     {
+        // $review->load('game');
+        // dd($review->game);
         if (isset($review->steam_id)) {
-            $steamService = new SteamService($review->steam_id);
-            $gameImage = $steamService->gamePhoto;
+            // $steamService = new SteamService($review->steam_id);
+            $image_path = $review->game->image_path;
+            // dd($image_path);
         };
-        return view('reviews.show', ['review' => $review, 'gameImage' => $gameImage]);
+        return view('reviews.show', ['review' => $review, 'image_path' => $image_path]);
     }
 
     public function store()
@@ -58,6 +61,7 @@ class ReviewController extends Controller
             'title' => request('title'),
             'content' => request('content'),
             'score' => request('score'),
+            'steam_id' => request('steam_id'),
             'user_id' => auth()->id(),
         ]);
         Mail::to($review->user)->queue(

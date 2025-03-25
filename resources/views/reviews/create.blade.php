@@ -26,6 +26,13 @@
                 <x-form-error name='score'/>
             </div>
         </x-form-field>
+        <x-form-field>
+            <div>
+                <x-form-label for="steam_id">Game`s steam ID</x-form-label>
+                <x-form-input id="steam_id" name="steam_id" type="number"></x-form-input>
+                <x-form-error name='steam_id'/>
+            </div>
+        </x-form-field>
         
         <x-form-button >Save</x-form-button>
     </form>
