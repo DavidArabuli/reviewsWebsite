@@ -46,3 +46,12 @@
   Most of steam api interactions are ready to implement. The basis is there. Game controller and steam service work to populate DB.
   I decided to store data locally, instead of constant request to APi.
   So, game needs to be added first, and then reviews for this game can be added, with relevant data pulled from local DB.
+
+  It would be annoying to manually type Steam App ID and local game id (from DB) when review is written. So there probably should be a quick way to select a game, to write review for. A game, that was previously added to database.
+  One way to do it, is to have a link on a game page "write a review for this game" - which will pass game`s id, which then will allow to get steam_id for this game.
+  OR
+  There might be selectable list, in review creation page, that gives same data...
+
+  ... chose first variant.
+  Data is passed from a game page, so author of the review does not need to enter game id or steam id.
+  

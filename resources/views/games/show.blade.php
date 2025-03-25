@@ -14,8 +14,11 @@
     this game`s steam Pic is following
     <img src="{{asset($game->image_path)}}" alt="steam image"></img>
     <br>
-    {{-- <img src="{{$gameImage}}" alt="no image"> --}}
     <br>
+    @can('create', \App\Models\Review::class)
+    <x-button href="{{route('reviews.create', ['game_id'=>$game->id, 'steam_id' =>$game->steam_id ] )}}">write a review for this game</x-button>
+    @endcan 
+
     {{-- @foreach ($game->tags as $tag)
         <li>
          <a href="{{route('games.index', ['tag' => $tag->name])}}">{{$tag->name}}</a>   

@@ -32,14 +32,16 @@ class ReviewController extends Controller
 
         return view('reviews.index', compact('reviews'));
     }
-    public function create()
+    public function create(Request $request)
     {
-        return view('reviews.create');
+        $game_id = $request->query('game_id');
+        $steam_id = $request->query('steam_id');
+        return view('reviews.create', ['game_id' => $game_id, 'steam_id' => $steam_id]);
     }
 
     public function show(Review $review)
     {
-        // $review->load('game');
+        $review->load('game');
         // dd($review->game);
         if (isset($review->steam_id)) {
             // $steamService = new SteamService($review->steam_id);
@@ -62,11 +64,13 @@ class ReviewController extends Controller
             'content' => request('content'),
             'score' => request('score'),
             'steam_id' => request('steam_id'),
+            'game_id' => request('game_id'),
             'user_id' => auth()->id(),
         ]);
         Mail::to($review->user)->queue(
             new ReviewPosted($review)
         );
+
 
         return redirect('/reviews');
     }

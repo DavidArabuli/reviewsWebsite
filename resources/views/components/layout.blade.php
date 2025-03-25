@@ -48,8 +48,6 @@
     <p>User is NOT authenticated</p>
 @endauth --}}
 
-    @can('create', \App\Models\Review::class)
-    <x-button href="/reviews/create">write a review</x-button>
-    @endcan  
+     
 </body>
 </html>
