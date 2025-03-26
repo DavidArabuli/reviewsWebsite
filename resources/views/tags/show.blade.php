@@ -13,6 +13,14 @@
         <a href="{{route('games.show', ['game' => $game->title])}}">{{$game->title}}</a>   
         </li>
     @endforeach
+    <br>
+    all reviews associated with this tag
+    
+    @foreach ($tag->reviews as $review)
+        <li>
+        <a href="{{route('reviews.show', ['review' => $review->id])}}">{{$review->title}}</a>   
+        </li>
+    @endforeach
 
     {{-- @can('edit', $tag)
     <x-button href='/tags/{{$tag->id}}/edit'>Edit tag</x-button>

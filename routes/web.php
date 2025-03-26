@@ -29,7 +29,7 @@ Route::controller(ReviewController::class)->group(function () {
     Route::get('/reviews', 'index')->name('reviews.index');
     Route::get('/reviews/create', 'create')->name('reviews.create')->middleware('auth');
     Route::post('/reviews', 'store')->middleware('auth');
-    Route::get('/reviews/{review}', 'show');
+    Route::get('/reviews/{review}', 'show')->name('reviews.show');
     Route::get('/reviews/{review}/edit', 'edit')->middleware('auth')
         ->can('edit', 'review');
     Route::patch('/reviews/{review}', 'update');

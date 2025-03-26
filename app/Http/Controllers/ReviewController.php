@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\User;
 use App\Models\Review;
 use App\Mail\ReviewPosted;
@@ -36,7 +37,7 @@ class ReviewController extends Controller
     {
         $game_id = $request->query('game_id');
         $steam_id = $request->query('steam_id');
-        return view('reviews.create', ['game_id' => $game_id, 'steam_id' => $steam_id]);
+        return view('reviews.create', ['game_id' => $game_id, 'steam_id' => $steam_id, 'tags' => Tag::all()]);
     }
 
     public function show(Review $review)
@@ -57,6 +58,7 @@ class ReviewController extends Controller
             'title' => ['required', 'min:3'],
             'content' => ['required'],
             'score' => ['required'],
+            'tag' => 'exists:tags,id'
 
         ]);
         $review = Review::create([
@@ -67,6 +69,9 @@ class ReviewController extends Controller
             'game_id' => request('game_id'),
             'user_id' => auth()->id(),
         ]);
+        if (request()->has('tag')) {
+            $review->tags()->attach(request()->tag);
+        }
         Mail::to($review->user)->queue(
             new ReviewPosted($review)
         );
