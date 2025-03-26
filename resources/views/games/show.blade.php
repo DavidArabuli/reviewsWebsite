@@ -3,9 +3,20 @@
         Single game page
     </x-slot:heading>
     <h1>hello from single game page</h1>
+    @if ($steamVideoUrl)
+    <video width="640" height="360" controls>
+        <source src="{{$steamVideoUrl}}" type="video/mp4">
+            Does your browser support this video tag?
+    </video>
+    @else
+    <p>No trailer available.</p>    
+    @endif
+    <p>steam video url:</p>
+    <p>{{$steamVideoUrl}}</p>
     <br>
     this game`s id is {{$game->id}}
     <br>
+
     this game`s title is {{$game->title}}
     <br>
     this game`s steam ID is {{$game->steam_id}}

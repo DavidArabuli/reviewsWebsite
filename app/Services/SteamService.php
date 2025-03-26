@@ -52,6 +52,18 @@ class SteamService
     {
         return $this->localPath;
     }
+    public function getGameVideo()
+    {
+        $url = "https://store.steampowered.com/api/appdetails?appids={$this->appID}";
+        $response  = Http::withoutVerifying()->get($url)->json();
+        if (isset($response[$this->appID]['data']['movies'][0]['mp4']['max'])) {
+
+            return $response[$this->appID]['data']['movies'][0]['mp4']['max']; // High-quality video URL
+        }
+        return null;
+    }
+
+
     // private function set_review_url($ID)
     // {
     //     $this->urlReview = "https://store.steampowered.com/appreviews/{$ID}?json=1";
