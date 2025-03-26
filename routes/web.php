@@ -5,6 +5,7 @@ use App\Jobs\TranslateJob;
 use App\Mail\ReviewPosted;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\GameController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\AdminController;
@@ -21,35 +22,43 @@ Route::get('test', function () {
 
 Route::view('/', 'welcome');
 
+// *********** REVIEW ROUTES ***********
+
 Route::controller(ReviewController::class)->group(function () {
 
-
     Route::get('/reviews', 'index')->name('reviews.index');
-
     Route::get('/reviews/create', 'create')->name('reviews.create')->middleware('auth');
-
     Route::post('/reviews', 'store')->middleware('auth');
-
     Route::get('/reviews/{review}', 'show');
-
     Route::get('/reviews/{review}/edit', 'edit')->middleware('auth')
         ->can('edit', 'review');
-
     Route::patch('/reviews/{review}', 'update');
-
     Route::delete('/reviews/{review}', 'destroy');
 });
 
+// *********** TAG ROUTES ***********
+
+Route::controller(TagController::class)->group(function () {
+
+    Route::get('/tags', 'index')->name('tags.index');
+    Route::get('/tags/create', 'create')->name('tags.create');
+    Route::post('/tags', 'store');
+    Route::get('/tags/{tag}', 'show')->name('tags.show');
+    Route::get('/tags/{tag}/edit', 'edit');
+    // ->middleware('auth')
+    // ->can('edit', 'tag');
+    Route::patch('/tags/{tag}', 'update');
+    Route::delete('/tags/{tag}', 'destroy');
+});
+
+
+// *********** GAME ROUTES ***********
 
 Route::controller(GameController::class)->group(function () {
 
-
     Route::get('/games', 'index')->name('games.index');
-
     Route::get('/games/create', 'create')->middleware('auth');
-
     Route::post('/games', 'store')->middleware('auth');
-
     Route::get('/games/{game}', 'show')->name('games.show');
 
     // Route::get('/games/{game}/edit', 'edit')->middleware('auth')
