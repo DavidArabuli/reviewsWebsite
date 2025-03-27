@@ -42,7 +42,7 @@ Route::controller(TagController::class)->group(function () {
 
     Route::get('/tags', 'index')->name('tags.index');
     Route::get('/tags/create', 'create')->name('tags.create');
-    Route::post('/tags', 'store');
+    Route::post('/tags', 'store')->name('tags.store');
     Route::get('/tags/{tag}', 'show')->name('tags.show');
     Route::get('/tags/{tag}/edit', 'edit');
     // ->middleware('auth')

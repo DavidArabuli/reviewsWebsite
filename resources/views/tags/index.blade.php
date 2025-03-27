@@ -17,6 +17,8 @@
             
         @endforeach
 
- 
+ <br>
+ <a href="{{route('tags.create')}}">create new tag</a>
+ <br>
     
 </x-layout>

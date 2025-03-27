@@ -7,9 +7,9 @@
         @csrf
         <x-form-field>
             <div>
-                <x-form-label for="title">tag title</x-form-label>
-                <x-form-input id="title" name="title" type="text"></x-form-input>
-                <x-form-error name='title'/>
+                <x-form-label for="tag">tag tag</x-form-label>
+                <x-form-input id="tag" name="tag" type="text"></x-form-input>
+                <x-form-error name='tag'/>
             </div>
         </x-form-field>
         {{-- <x-form-field>
