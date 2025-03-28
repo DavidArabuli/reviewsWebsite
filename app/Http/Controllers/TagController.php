@@ -24,14 +24,47 @@ class TagController extends Controller
     }
     public function store()
     {
-        $tagName = trim(strtolower(request('tag')));
+        // $tagName = trim(strtolower(request('tag')));
 
-        request()->merge(['tag' => $tagName]);
+        // request()->merge(['tag' => $tagName]);
 
         request()->validate([
             'tag' => 'required|unique:tags,name'
         ]);
+        Tag::create([
+            'name' => request('tag'),
+
+        ]);
         // dd('hey from store tags');
         return redirect()->route('tags.index')->with('success', 'Tag created successfully!');
+    }
+    public function edit(Tag $tag)
+    {
+        return view('tags.edit', ['tag' => $tag]);
+    }
+
+    public function update(Tag $tag)
+    {
+
+        request()->validate([
+            'tag' => 'required|unique:tags,name',
+        ]);
+
+        $tag->update([
+            'name' => request('tag'),
+
+        ]);
+        return redirect('/tags/' . $tag->id);
+    }
+    public function destroy(tag $tag)
+    {
+        // authorize
+        // delete
+        // tag::findOrFail($id)->delete(); --same as below
+        // $tag = tag::findOrFail($id);
+        $tag->delete();
+
+        return redirect('/tags');
+        // redirect
     }
 }

@@ -44,10 +44,10 @@ Route::controller(TagController::class)->group(function () {
     Route::get('/tags/create', 'create')->name('tags.create');
     Route::post('/tags', 'store')->name('tags.store');
     Route::get('/tags/{tag}', 'show')->name('tags.show');
-    Route::get('/tags/{tag}/edit', 'edit');
+    Route::get('/tags/{tag}/edit', 'edit')->name('tags.edit');
     // ->middleware('auth')
     // ->can('edit', 'tag');
-    Route::patch('/tags/{tag}', 'update');
+    Route::patch('/tags/{tag}', 'update')->name('tags.update');
     Route::delete('/tags/{tag}', 'destroy');
 });
 
