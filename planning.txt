@@ -60,5 +60,9 @@
   Tags will be manageable - so they need controller and views.
   There has to be "tags to review" navigation and tags to game, and games\reviews to tags.
   Editors should be able to manage tags (edit, delete, add)
+
   27.03 
   Tag creation and storing.
+  
+  28.04
+  Tag policy, editing, deletion, and blade templates.
