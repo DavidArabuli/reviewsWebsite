@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class);
             $table->foreignId('game_id')->nullable()->constrained()->nullOnDelete();
+            $table->json('screenshots')->nullable();
 
             $table->string('title');
             $table->text('content');

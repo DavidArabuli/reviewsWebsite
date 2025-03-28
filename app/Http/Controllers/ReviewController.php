@@ -58,7 +58,8 @@ class ReviewController extends Controller
             'title' => ['required', 'min:3'],
             'content' => ['required'],
             'score' => ['required'],
-            'tag' => 'exists:tags,id'
+            'tag' => 'exists:tags,id',
+            'screenshots.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048'
 
         ]);
         $review = Review::create([
@@ -69,6 +70,20 @@ class ReviewController extends Controller
             'game_id' => request('game_id'),
             'user_id' => auth()->id(),
         ]);
+        if (request()->hasFile('screenshots')) {
+            $screenshotsPaths = [];
+
+            foreach (request()->file('screenshots') as $screenshot) {
+                $path = $screenshot->store('screenshots', 'public');
+                $screenshotsPaths[] = $path;  // Collect all the paths
+            }
+
+            // Save the collected file paths to the review
+            $review->update([
+                'screenshots' => $screenshotsPaths
+            ]);
+        }
+
         if (request()->has('tag')) {
             $review->tags()->attach(request()->tag);
         }
@@ -84,6 +99,7 @@ class ReviewController extends Controller
     {
         return view('reviews.edit', ['review' => $review]);
     }
+
     public function update(Review $review)
     {
         // authorize...
@@ -107,6 +123,7 @@ class ReviewController extends Controller
         ]);
         return redirect('/reviews/' . $review->id);
     }
+
     public function destroy(Review $review)
     {
         // authorize

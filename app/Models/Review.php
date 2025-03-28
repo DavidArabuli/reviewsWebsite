@@ -12,10 +12,12 @@ class Review extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'content', 'user_id', 'score', 'game_id', 'steam_id'];
+    protected $fillable = ['title', 'content', 'user_id', 'score', 'game_id', 'steam_id', 'screenshots'];
     // to disable all "fillable" protection functionality
     // protected $guarded = [];
-
+    protected $casts = [
+        'screenshots' => 'array',
+    ];
     public function user()
     {
         return $this->belongsTo(User::class);

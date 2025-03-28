@@ -3,7 +3,7 @@
         Create review
     </x-slot:heading>
     <h1>Create a new review</h1>
-    <form method="POST" action="/reviews">
+    <form method="POST" action="/reviews" enctype="multipart/form-data">
         @csrf
         <x-form-field>
             <div>
@@ -40,16 +40,15 @@
         <x-form-error name="tag"/>
     </div>
 </x-form-field>
-        {{-- <x-form-label for="tags">Review Tags</x-form-label>
-        <select id="tags" name="tags[]" multiple>
-            <option value="" selected disabled>Choose a tag...</option>
-            @foreach ($tags as $tag)
-                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-            @endforeach
-        </select>
-        <x-form-error name="tags"/> --}}
     </div>
 </x-form-field>
+<x-form-field>
+            <div>
+                <x-form-label for="screenshots">Upload Screenshots</x-form-label>
+                <input type="file" name="screenshots[]" id="screenshots" multiple accept="image/*">
+                <x-form-error name='screenshots'/>
+            </div>
+        </x-form-field>
         
         <input type="hidden" name="game_id" value="{{ $game_id }}">
         <input type="hidden" name="steam_id" value="{{ $steam_id }}">

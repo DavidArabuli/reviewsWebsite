@@ -66,3 +66,5 @@
   
   28.04
   Tag policy, editing, deletion, and blade templates.
+  Overall layout is finished, information is interconnected in blade templates and controllers.
+  Screenshot addition and storing.

@@ -26,6 +26,12 @@
     <img src="{{asset($game->image_path)}}" alt="steam image"></img>
     <br>
     <br>
+    this game`s tags:
+    @foreach($game->tags as $tag)
+        <br>
+        <a href="{{route('tags.show', $tag)}}">{{$tag['name']}}</a>
+    @endforeach
+    <br>
     @can('create', \App\Models\Review::class)
     <x-button href="{{route('reviews.create', ['game_id'=>$game->id, 'steam_id' =>$game->steam_id ] )}}">write a review for this game</x-button>
     @endcan 

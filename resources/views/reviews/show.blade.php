@@ -23,6 +23,16 @@
          <a href="{{route('reviews.index', ['tag' => $tag->name])}}">{{$tag->name}}</a>   
         </li>
     @endforeach
+
+    @if ($review->screenshots && count($review->screenshots) > 0)
+    @foreach ($review->screenshots as $screenshot)
+        <img src="{{ asset('storage/' . $screenshot) }}" alt="Screenshot">
+    @endforeach
+@else
+    <p>No screenshots available.</p>
+@endif
+
+
     @can('edit', $review)
     <x-button href='/reviews/{{$review->id}}/edit'>Edit review</x-button>
     @endcan
