@@ -20,13 +20,15 @@
             @enderror
         </div>
         <div>
-            <label for="content">content</label>
+            {{-- <label for="content">content</label>
             <input 
             id="content" 
             name="content" 
             type="text"
             value="{{$review->content}}"
-            >
+            > --}}
+            <input id="content" type="hidden" name="content" value="{{ $review->content }}">
+            <trix-editor input="content"></trix-editor>
         </div>
         <div class="error">
             @error('content')
