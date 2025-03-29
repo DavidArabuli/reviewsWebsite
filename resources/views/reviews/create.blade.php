@@ -15,7 +15,13 @@
         <x-form-field>
             <div>
                 <x-form-label for="content">review content</x-form-label>
-                <x-form-input id="content" name="content" type="text"></x-form-input>
+                {{-- <x-form-input id="content" name="content" type="text"></x-form-input> --}}
+                
+                {{-- editor --}}
+                <input id="content" type="hidden" name="content">
+                <trix-editor input="content"></trix-editor>
+                {{-- editor --}}
+
                 <x-form-error name='content'/>
             </div>
         </x-form-field>

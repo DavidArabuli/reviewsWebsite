@@ -56,7 +56,7 @@ class ReviewController extends Controller
     {
         request()->validate([
             'title' => ['required', 'min:3'],
-            'content' => ['required'],
+            'content' => ['required', 'string'],
             'score' => ['required'],
             'tag' => 'exists:tags,id',
             'screenshots.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048'

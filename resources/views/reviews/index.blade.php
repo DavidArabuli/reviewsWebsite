@@ -24,7 +24,7 @@
             A game rated as: {{$item['score']}}, 
             <span>from: {{$item->user->name}}</span>
         </li>
-        <li>content: {{$item['content']}}</li>
+        <li>content: {!!$item['content']!!}</li>
         <br>
             
         @endforeach

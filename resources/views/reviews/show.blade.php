@@ -8,7 +8,9 @@
     <br>
     this review`s title is {{$review->title}}
     <br>
-    this review`s content is {{$review->content}}
+    {{-- this review`s content is {{$review->content}} --}}
+    {{-- rich text editor --}}
+    <div>{!! $review->content !!}</div>
     <br>
     <br>
     this review`s score is {{$review->score}}
