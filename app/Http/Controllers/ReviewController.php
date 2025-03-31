@@ -55,8 +55,8 @@ class ReviewController extends Controller
     public function store()
     {
         request()->validate([
-            'title' => ['required', 'min:3'],
-            'content' => ['required', 'string'],
+            'title' => ['required', 'min:3', 'max:200'],
+            'content' => ['required', 'string', 'max:5000'],
             'score' => ['required'],
             'tag' => 'exists:tags,id',
             'screenshots.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048'
@@ -105,8 +105,8 @@ class ReviewController extends Controller
         // authorize...
         // validation
         request()->validate([
-            'title' => ['required', 'min:3'],
-            'content' => ['required'],
+            'title' => ['required', 'min:3', 'max:200'],
+            'content' => ['required', 'string', 'max:5000'],
             'score' => ['required'],
         ]);
         // update and persist

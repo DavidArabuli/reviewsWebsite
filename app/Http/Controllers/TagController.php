@@ -29,7 +29,7 @@ class TagController extends Controller
         // request()->merge(['tag' => $tagName]);
 
         request()->validate([
-            'tag' => 'required|unique:tags,name'
+            'tag' => ['required', 'unique:tags,name', 'max:50']
         ]);
         Tag::create([
             'name' => request('tag'),
@@ -47,7 +47,7 @@ class TagController extends Controller
     {
 
         request()->validate([
-            'tag' => 'required|unique:tags,name',
+            'tag' => ['required', 'unique:tags,name', 'max:50'],
         ]);
 
         $tag->update([

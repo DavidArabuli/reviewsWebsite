@@ -29,7 +29,7 @@ class TagPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->is_admin || $user->is_editor;
     }
 
     public function edit(User $user, Tag $tag): bool

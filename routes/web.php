@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Tag;
 use App\Models\Review;
 use App\Jobs\TranslateJob;
 use App\Mail\ReviewPosted;
@@ -27,13 +28,20 @@ Route::view('/', 'welcome');
 Route::controller(ReviewController::class)->group(function () {
 
     Route::get('/reviews', 'index')->name('reviews.index');
-    Route::get('/reviews/create', 'create')->name('reviews.create')->middleware('auth');
+    Route::get('/reviews/create', 'create')
+        ->name('reviews.create')
+        ->middleware('auth');
     Route::post('/reviews', 'store')->middleware('auth');
     Route::get('/reviews/{review}', 'show')->name('reviews.show');
-    Route::get('/reviews/{review}/edit', 'edit')->middleware('auth')
+    Route::get('/reviews/{review}/edit', 'edit')
+        ->middleware('auth')
         ->can('edit', 'review');
-    Route::patch('/reviews/{review}', 'update');
-    Route::delete('/reviews/{review}', 'destroy');
+    Route::patch('/reviews/{review}', 'update')
+        ->middleware('auth')
+        ->can('edit', 'review');
+    Route::delete('/reviews/{review}', 'destroy')
+        ->middleware('auth')
+        ->can('edit', 'review');
 });
 
 // *********** TAG ROUTES ***********
@@ -41,14 +49,22 @@ Route::controller(ReviewController::class)->group(function () {
 Route::controller(TagController::class)->group(function () {
 
     Route::get('/tags', 'index')->name('tags.index');
-    Route::get('/tags/create', 'create')->name('tags.create');
-    Route::post('/tags', 'store')->name('tags.store');
+    Route::get('/tags/create', 'create')->name('tags.create')
+        ->middleware('auth')
+        ->can('create', Tag::class);
+    Route::post('/tags', 'store')->name('tags.store')
+        ->middleware('auth')
+        ->can('create', Tag::class);
     Route::get('/tags/{tag}', 'show')->name('tags.show');
-    Route::get('/tags/{tag}/edit', 'edit')->name('tags.edit');
-    // ->middleware('auth')
-    // ->can('edit', 'tag');
-    Route::patch('/tags/{tag}', 'update')->name('tags.update');
-    Route::delete('/tags/{tag}', 'destroy');
+    Route::get('/tags/{tag}/edit', 'edit')->name('tags.edit')
+        ->middleware('auth')
+        ->can('edit', 'tag');
+    Route::patch('/tags/{tag}', 'update')->name('tags.update')
+        ->middleware('auth')
+        ->can('edit', 'tag');
+    Route::delete('/tags/{tag}', 'destroy')
+        ->middleware('auth')
+        ->can('edit', 'tag');
 });
 
 
