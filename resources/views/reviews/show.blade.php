@@ -15,6 +15,10 @@
     <br>
     this review`s score is {{$review->score}}
     <br>
+    this review`s author is {{$review->user->name}}
+    <br>
+    Check all of his reviews: 
+    <a href="{{route('profile.show', $user)}}">Check all of his reviews </a>
     <br>
     this review`s steam ID is {{$review->steam_id}}
     <br>

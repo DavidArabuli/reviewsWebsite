@@ -78,12 +78,13 @@ Route::controller(GameController::class)->group(function () {
     Route::post('/games', 'store')->middleware('auth');
     Route::get('/games/{game}', 'show')->name('games.show');
 
-    // Route::get('/games/{game}/edit', 'edit')->middleware('auth')
-    //     ->can('edit', 'game');
+    Route::get('/games/{game}/edit', 'edit')
+        ->middleware('auth');
+    // ->can('edit', 'game');
 
-    // Route::patch('/games/{game}', 'update');
+    Route::patch('/games/{game}', 'update')->middleware('auth')->can('edit', 'game');
 
-    // Route::delete('/games/{game}', 'destroy');
+    Route::delete('/games/{game}', 'destroy')->name('games.destroy')->can('edit', 'game');
 });
 
 

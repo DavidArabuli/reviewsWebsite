@@ -36,6 +36,10 @@
     <x-button href="{{route('reviews.create', ['game_id'=>$game->id, 'steam_id' =>$game->steam_id ] )}}">write a review for this game</x-button>
     @endcan 
 
+    @can('edit', $game)
+    <x-button href='/games/{{$game->id}}/edit'>Edit game</x-button>
+    @endcan
+
     {{-- @foreach ($game->tags as $tag)
         <li>
          <a href="{{route('games.index', ['tag' => $tag->name])}}">{{$tag->name}}</a>   

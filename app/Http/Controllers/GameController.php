@@ -40,4 +40,35 @@ class GameController extends Controller
 
         return redirect('/games');
     }
+    public function edit(Game $game)
+    {
+
+
+        return view('games.edit', ['game' => $game]);
+    }
+    public function update(Game $game)
+    {
+        // dd('hey');
+        request()->validate([
+            'steam_id' => ['required',],
+            'title' => ['required'],
+        ]);
+
+        $game->update([
+            'title' => request('title'),
+            'steam_id' => request('steam_id'),
+
+
+        ]);
+
+        return redirect('/games/' . $game->id);
+    }
+    public function destroy(Game $game)
+    {
+        $game->delete();
+
+
+
+        return redirect('/games');
+    }
 }

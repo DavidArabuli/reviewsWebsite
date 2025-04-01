@@ -49,7 +49,8 @@ class ReviewController extends Controller
             $image_path = $review->game->image_path;
             // dd($image_path);
         };
-        return view('reviews.show', ['review' => $review, 'image_path' => $image_path]);
+        $user = $review->user;
+        return view('reviews.show', ['review' => $review, 'image_path' => $image_path, 'user' => $user]);
     }
 
     public function store()
