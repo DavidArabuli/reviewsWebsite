@@ -1,6 +1,6 @@
 @props(['name'])
 
-<div class="error">
+<div class="alert-danger">
             @error($name)
                 {{$message}}
             @enderror

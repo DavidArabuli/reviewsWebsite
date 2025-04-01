@@ -1,1 +1,1 @@
-<input {{$attributes->merge(['class'=>''])}}>
+<input {{$attributes->merge(['class'=>'input'])}}>

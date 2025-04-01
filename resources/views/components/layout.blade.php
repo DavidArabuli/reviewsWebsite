@@ -13,7 +13,7 @@
     <title>{{$heading}}</title>
 </head>
 <body class="body">
-    <nav>
+    <nav class="nav">
         
         <x-nav-link href='/' :active="request()->is('/')">Home</x-nav-link>
         <x-nav-link href='/reviews' :active="request()->is('reviews')">reviews</x-nav-link>
@@ -31,6 +31,7 @@
             @csrf
             <x-form-button>Logout</x-form-button>
         </form>
+        
         <p>
             current user: {{auth()->user()->email}}
         </p> 
@@ -38,9 +39,6 @@
         @if(auth()->user()->is_admin)
 
             <x-nav-link href="/admin">Admin dashboard</x-nav-link>
-            <p>
-                current user: {{auth()->user()->email}}
-            </p> 
         
         @endif
         @endauth

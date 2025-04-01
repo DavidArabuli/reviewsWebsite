@@ -1,1 +1,1 @@
-<label {{$attributes->merge(['class'=>''])}}>{{$slot}}</label>
+<label {{$attributes->merge(['class'=>'input-label'])}}>{{$slot}}</label>
