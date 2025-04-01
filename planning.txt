@@ -64,12 +64,17 @@
   27.03 
   Tag creation and storing.
   
-  28.04
+  28.03
   Tag policy, editing, deletion, and blade templates.
   Overall layout is finished, information is interconnected in blade templates and controllers.
   Screenshot addition and storing.
   
-  29.04
+  29.03
   Added and configured Trix rich text editor.
-  30-31
+
+  30-31.03
   finishing touches and clean up, validation, policies etc.
+
+  1.04
+  added basic css
+  Have to add author profile, with all reviews user wrote.

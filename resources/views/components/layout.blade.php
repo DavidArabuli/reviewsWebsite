@@ -35,7 +35,7 @@
         <p>
             current user: {{auth()->user()->email}}
         </p> 
-        
+        <x-nav-link href="{{route('profile.show', auth()->user())}}">profile</x-nav-link>
         @if(auth()->user()->is_admin)
 
             <x-nav-link href="/admin">Admin dashboard</x-nav-link>
@@ -46,11 +46,7 @@
     </nav>
     {{$slot}}
     <br>
-    {{-- @auth
-    <p>User is authenticated: {{ auth()->user()->email }}</p>
-@else
-    <p>User is NOT authenticated</p>
-@endauth --}}
+
 
      
 </body>

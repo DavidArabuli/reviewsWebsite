@@ -11,6 +11,7 @@ use App\Http\Controllers\GameController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\UserManagementController;
@@ -85,6 +86,7 @@ Route::controller(GameController::class)->group(function () {
     // Route::delete('/games/{game}', 'destroy');
 });
 
+
 // Route::resource('reviews', ReviewController::class);
 
 Route::get('/contact', function () {
@@ -102,6 +104,14 @@ Route::middleware([AdminMiddleware::class])->group(function () {
         Route::delete('/{user}', [UserManagementController::class, 'destroy'])->name('destroy');
     });
 });
+Route::middleware('auth')->group(function () {
+
+    Route::prefix('users')->group(function () {
+
+        Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
+    });
+});
+
 
 
 
