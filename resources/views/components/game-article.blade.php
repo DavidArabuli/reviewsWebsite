@@ -1,0 +1,1 @@
+<div {{$attributes->merge(['class'=>'game-article'])}}>{{$slot}}</div>
