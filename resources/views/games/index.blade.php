@@ -25,8 +25,10 @@
         @endforeach
     <br>
     <p>=====</p>
+    @can('edit', $game)
     <a href="/games/create">add a new game</a>
     <p>=====</p>
     <br>
+    @endcan
     
 </x-layout>

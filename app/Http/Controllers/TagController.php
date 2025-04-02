@@ -9,8 +9,9 @@ class TagController extends Controller
 {
     public function index()
     {
+        $tag = new Tag();
         // dd('hey from all tags');
-        return view('tags.index', ['tags' => Tag::all()]);
+        return view('tags.index', ['tags' => Tag::all(), 'tag' => $tag]);
     }
     public function show($id)
     {

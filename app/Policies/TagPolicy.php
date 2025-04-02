@@ -32,7 +32,7 @@ class TagPolicy
         return $user->is_admin || $user->is_editor;
     }
 
-    public function edit(User $user, Tag $tag): bool
+    public function edit(User $user): bool
     {
         return $user->is_admin || $user->is_editor;
     }
