@@ -51,9 +51,6 @@
     {{$slot}}
     <br>
 
-{{-- <p>
-            current user: {{auth()->user()->email}}
-        </p>  --}}
      
 </body>
 </html>

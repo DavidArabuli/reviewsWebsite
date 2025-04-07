@@ -16,7 +16,7 @@
     </form>
     
     @foreach ($reviews as $item)
-        <x-review-card>
+        <x-review-preview>
             <li>read our 
                 <a href="/reviews/{{$item['id']}}">
     
@@ -27,7 +27,7 @@
             </li>
             <li>content: {!!$item['content']!!}</li>
             <br>
-        </x-review-card>
+        </x-review-preview>
             
         @endforeach
 

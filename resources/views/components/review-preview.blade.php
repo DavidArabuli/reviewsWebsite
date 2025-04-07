@@ -1,0 +1,1 @@
+<div {{$attributes->merge(['class'=>'review-preview'])}}>{{$slot}}</div>

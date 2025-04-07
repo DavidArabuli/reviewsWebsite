@@ -1,1 +1,0 @@
-<div {{$attributes->merge(['class'=>'review-article'])}}>{{$slot}}</div>

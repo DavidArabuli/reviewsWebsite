@@ -13,7 +13,7 @@
     </form> --}}
     
     @foreach ($games as $game)
-    <x-game-card>
+    <x-game-preview>
 
         <li>read our 
             <a href="/games/{{$game['id']}}">
@@ -23,7 +23,7 @@
         </li>
         
         <br>
-    </x-game-card>
+    </x-game-preview>
             
         @endforeach
     <br>

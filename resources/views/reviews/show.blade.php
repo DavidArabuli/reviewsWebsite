@@ -2,48 +2,59 @@
     <x-slot:heading>
         Single review page
     </x-slot:heading>
-    <x-review-article>
+    <x-article>
 
-        <h1>hello from single review page</h1>
-        <br>
-        this article`s id is {{$review->id}}
-        <br>
-        this review`s title is {{$review->title}}
-        <br>
-        {{-- this review`s content is {{$review->content}} --}}
-        {{-- rich text editor --}}
-        <div>{!! $review->content !!}</div>
-        <br>
-        <br>
-        this review`s score is {{$review->score}}
-        <br>
-        this review`s author is {{$review->user->name}}
-        <br>
-        Check all of his reviews: 
+        <x-slot:title>
+        This reviews title is {{ $review->title }}
+    </x-slot:title>
+    <x-slot:steamImage>
+        <img class="steamImage" src="{{asset($image_path)}}" alt="steam image"></img>
+    </x-slot:steamImage>
+    <x-slot:content>
+        {!! $review->content !!}
+    </x-slot:content>
+
+    <x-slot:score>
+        This reviews score is {{ $review->score }}
+    </x-slot:score>
+
+    <x-slot:author>
+        this review`s author is {{ $review->user->name }}
+    </x-slot:author>
+    
+    <x-slot:steamID>
+        this review`s steam ID is {{ $review->steam_id }}
+    </x-slot:steamID>
+        <x-slot:otherReviews>
+            Check all of his reviews: 
         <a href="{{route('profile.show', $user)}}">Check all of his reviews </a>
-        <br>
-        this review`s steam ID is {{$review->steam_id}}
-        <br>
-        <img src="{{asset($image_path)}}" alt="steam image"></img>
-        <br>
+    </x-slot:otherReviews>
+
+    <x-slot:tags>
         @foreach ($review->tags as $tag)
             <li>
-             <a href="{{route('reviews.index', ['tag' => $tag->name])}}">{{$tag->name}}</a>   
+            <a href="{{route('reviews.index', ['tag' => $tag->name])}}">{{$tag->name}}</a>   
             </li>
         @endforeach
+    </x-slot:tags>
+        <br>
+
+    <x-slot:screenshots>
+            @if ($review->screenshots && count($review->screenshots) > 0)
+            @foreach ($review->screenshots as $screenshot)
+                <img src="{{ asset('storage/' . $screenshot) }}" alt="Screenshot">
+            @endforeach
+            @else
+            <p>No screenshots available.</p>
+            @endif
+    </x-slot:screenshots>
     
-        @if ($review->screenshots && count($review->screenshots) > 0)
-        @foreach ($review->screenshots as $screenshot)
-            <img src="{{ asset('storage/' . $screenshot) }}" alt="Screenshot">
-        @endforeach
-    @else
-        <p>No screenshots available.</p>
-    @endif
     
-    
+        <x-slot:functional>
         @can('edit', $review)
         <x-button href='/reviews/{{$review->id}}/edit'>Edit review</x-button>
         @endcan
-    </x-review-article>
+        </x-slot:functional>
+    </x-article>
     
 </x-layout>

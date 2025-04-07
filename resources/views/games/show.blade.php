@@ -3,7 +3,7 @@
         Single game page
     </x-slot:heading>
     <h1>hello from single game page</h1>
-    <x-game-article>
+    <x-article>
 
         @if ($steamVideoUrl)
         <video width="640" height="360" controls>
@@ -41,7 +41,7 @@
         @can('edit', $game)
         <x-button href='/games/{{$game->id}}/edit'>Edit game</x-button>
         @endcan
-    </x-game-article>
+    </x-article>
 
     {{-- @foreach ($game->tags as $tag)
         <li>

@@ -280,12 +280,53 @@ trix-toolbar [data-trix-button-group="file-tools"] {
 .review-card{
   border: 1px dotted red;
 }
-.review-article{
-  border: 1px dotted peru;
-}
+
 .game-card{
   border: 1px dotted blue;
 }
-.game-article{
-  border: 1px dotted purple;
+
+/************ list styles *************/
+
+.game-preview{
+  background: #007bff;
+}
+.review-preview{
+  background: #eb86c9;
+}
+
+/************ single page styles ***********/
+
+
+.article{
+  border: 1px dotted peru;
+  margin: 1rem;
+}
+
+.title{
+  border: 4px solid purple;
+}
+
+.heading{
+  color: #e3fa16;
+}
+
+.content{
+  border: 4px dotted rgb(49, 122, 20);
+}
+.info-block{
+  border: 2px solid red;
+  display: flex;
+  gap: 1rem;
+}
+.steamImage-div{
+  border: 2px solid black;
+  
+}
+.steamImage{
+  border: 2px solid rgb(230, 62, 62);
+  margin: auto;
+  display: block;
+}
+.screenshots-div{
+  border: 2px solid rgb(185, 20, 20);
 }
