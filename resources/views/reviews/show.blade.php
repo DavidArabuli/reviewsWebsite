@@ -2,7 +2,7 @@
     <x-slot:heading>
         Single review page
     </x-slot:heading>
-    <x-article>
+    <x-review-article>
 
         <x-slot:title>
         This reviews title is {{ $review->title }}
@@ -55,6 +55,6 @@
         <x-button href='/reviews/{{$review->id}}/edit'>Edit review</x-button>
         @endcan
         </x-slot:functional>
-    </x-article>
+    </x-review-article>
     
 </x-layout>

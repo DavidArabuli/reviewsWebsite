@@ -2,9 +2,11 @@
     <x-slot:heading>
         Single game page
     </x-slot:heading>
-    <h1>hello from single game page</h1>
-    <x-article>
-
+    <h1>hello from single game page!!!</h1>
+    
+    <x-game-article>
+        
+    </x-game-article>
         @if ($steamVideoUrl)
         <video width="640" height="360" controls>
             <source src="{{$steamVideoUrl}}" type="video/mp4">
@@ -13,7 +15,7 @@
         @else
         <p>No trailer available.</p>    
         @endif
-        <p>steam video url:</p>
+        <p>steam video url!!!!!!!!!!!!!!:</p>
         <p>{{$steamVideoUrl}}</p>
         <br>
         this game`s id is {{$game->id}}
@@ -25,6 +27,7 @@
         <br>
         <br>
         this game`s steam Pic is following
+        <p>heyehehehe</p>
         <img src="{{asset($game->image_path)}}" alt="steam image"></img>
         <br>
         <br>
@@ -41,7 +44,7 @@
         @can('edit', $game)
         <x-button href='/games/{{$game->id}}/edit'>Edit game</x-button>
         @endcan
-    </x-article>
+  
 
     {{-- @foreach ($game->tags as $tag)
         <li>

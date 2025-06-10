@@ -105,13 +105,17 @@ Route::middleware([AdminMiddleware::class])->group(function () {
         Route::delete('/{user}', [UserManagementController::class, 'destroy'])->name('destroy');
     });
 });
-Route::middleware('auth')->group(function () {
+Route::prefix('users')->group(function () {
 
-    Route::prefix('users')->group(function () {
-
-        Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
-    });
+    Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 });
+// Route::middleware('auth')->group(function () {
+
+//     Route::prefix('users')->group(function () {
+
+//         Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
+//     });
+// });
 
 
 

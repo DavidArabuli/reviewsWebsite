@@ -10,7 +10,7 @@
     
     @foreach ($tag->games as $game)
         <li>
-        <a href="{{route('games.show', ['game' => $game->title])}}">{{$game->title}}</a>   
+        <a href="{{route('games.show', ['game' => $game->id])}}">{{$game->title}}</a>   
         </li>
     @endforeach
     <br>
