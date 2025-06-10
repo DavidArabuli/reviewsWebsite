@@ -25,6 +25,12 @@ class GameFactory extends Factory
             'steam_id' => $steamID,
             'title' => fake()->word(),
             'image_path' => $steamService->getLocalImgPath(),
+            'steam_review_score' => fake()->randomElement([
+                'mostly_positive',
+                'very_positive',
+                'mostly_negative'
+            ]),
+            'description' => fake()->sentence(100),
 
         ];
     }

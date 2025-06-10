@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 class SteamService
 {
-    public $appID;
+    public $steam_id;
     public $urlImage;
     public $urlReview;
     public $gamePhoto;
@@ -17,17 +17,18 @@ class SteamService
 
     public function __construct($ID)
     {
-        $this->appID = $ID;
-        $this->set_image_url($this->appID);
+        $this->steam_id = $ID;
+        $this->set_image_url($this->steam_id);
         // $this->set_review_url($ID);
         $this->setImageJson($this->urlImage);
         // $this->setReviewJson($this->urlReview);
         $this->downloadImage();
+        $this->getReviewScore();
     }
 
-    private function set_image_url($appID)
+    private function set_image_url($steam_id)
     {
-        $this->urlImage = "https://store.steampowered.com/api/appdetails?appids={$appID}";
+        $this->urlImage = "https://store.steampowered.com/api/appdetails?appids={$steam_id}";
     }
 
     private function setImageJson($urlImage)
@@ -35,7 +36,7 @@ class SteamService
 
         $dataImage = Http::withoutVerifying()->get($urlImage)->json();
         $this->gamePhoto =
-            $dataImage[$this->appID]['data']['header_image'];
+            $dataImage[$this->steam_id]['data']['header_image'];
     }
 
     private function downloadImage()
@@ -44,7 +45,7 @@ class SteamService
             return;
         };
         $imageContent = Http::withoutVerifying()->get($this->gamePhoto)->body();
-        $filename = "steam_games/{$this->appID}.jpg";
+        $filename = "steam_games/{$this->steam_id}.jpg";
         Storage::disk('public')->put($filename, $imageContent);
         $this->localPath = 'storage/' . $filename;
     }
@@ -54,13 +55,20 @@ class SteamService
     }
     public function getGameVideo()
     {
-        $url = "https://store.steampowered.com/api/appdetails?appids={$this->appID}";
+        $url = "https://store.steampowered.com/api/appdetails?appids={$this->steam_id}";
         $response  = Http::withoutVerifying()->get($url)->json();
-        if (isset($response[$this->appID]['data']['movies'][0]['mp4']['max'])) {
+        if (isset($response[$this->steam_id]['data']['movies'][0]['mp4']['max'])) {
 
-            return $response[$this->appID]['data']['movies'][0]['mp4']['max']; // High-quality video URL
+            return $response[$this->steam_id]['data']['movies'][0]['mp4']['max']; // High-quality video URL
         }
         return null;
+    }
+    public function getReviewScore()
+    {
+        $url = "https://store.steampowered.com/appreviews/{$this->steam_id}?json=1";
+        $response  = Http::withoutVerifying()->get($url)->json();
+        // dd($response['query_summary']['review_score_desc']);
+        $this->reviewScore = $response['query_summary']['review_score_desc'];
     }
 
 

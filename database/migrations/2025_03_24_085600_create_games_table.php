@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('steam_id');
             $table->string('title');
+            $table->string('description');
+            $table->string('steam_review_score');
             $table->string('image_path')->nullable();
             $table->timestamps();
         });

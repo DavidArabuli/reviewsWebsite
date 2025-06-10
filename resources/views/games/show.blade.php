@@ -5,7 +5,22 @@
     <h1>hello from single game page!!!</h1>
     
     <x-game-article>
-        
+        <x-slot:title>
+        This game`s title is {{ $game->title }}
+    </x-slot:title>
+    <x-slot:steamImage>
+        this game`s steam Pic is following
+        <img src="{{asset($game->image_path)}}" alt="steam image"></img>
+    </x-slot:steamImage>
+    <x-slot:description>
+        {{$game->description}}
+    </x-slot:description>
+    <x-slot:steam_review_score>
+        This reviews score is {{ $game->steam_review_score }}
+    </x-slot:steam_review_score>
+    <x-slot:steam_id>
+        this game`s steam ID is {{ $game->steam_id }}
+    </x-slot:steam_id>
     </x-game-article>
         @if ($steamVideoUrl)
         <video width="640" height="360" controls>
@@ -20,17 +35,7 @@
         <br>
         this game`s id is {{$game->id}}
         <br>
-    
-        this game`s title is {{$game->title}}
-        <br>
-        this game`s steam ID is {{$game->steam_id}}
-        <br>
-        <br>
-        this game`s steam Pic is following
-        <p>heyehehehe</p>
-        <img src="{{asset($game->image_path)}}" alt="steam image"></img>
-        <br>
-        <br>
+        
         this game`s tags:
         @foreach($game->tags as $tag)
             <br>

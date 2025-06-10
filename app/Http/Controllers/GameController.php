@@ -16,6 +16,8 @@ class GameController extends Controller
     {
         $game = Game::findOrFail($id);
         $steamVideoUrl = new SteamService($game->steam_id)->getGameVideo();
+        // $reviewsteam = new SteamService($game->steam_id);
+        // $reviewsteam->getReviewScore();
 
         return view('games.show', ['game' => $game, 'steamVideoUrl' => $steamVideoUrl]);
     }
@@ -30,13 +32,15 @@ class GameController extends Controller
             'title' => ['required'],
         ]);
         $steamData = new SteamService(request('steam_id'));
+        // dd($steamData->reviewScore);
         Game::create([
             'title' => request('title'),
             'steam_id' => request('steam_id'),
             'image_path' => $steamData->getLocalImgPath(),
+            'steam_review_score' => $steamData->reviewScore,
 
         ]);
-        dd($steamData->getLocalImgPath());
+        // dd($steamData->getLocalImgPath());
 
         return redirect('/games');
     }
