@@ -24,7 +24,8 @@ class GameController extends Controller
     }
     public function create()
     {
-        return view('games.create');
+        $allTags = Tag::all();
+        return view('games.create', ['allTags' => $allTags]);
     }
     public function store()
     {
@@ -39,6 +40,7 @@ class GameController extends Controller
             'title' => request('title'),
             'steam_id' => request('steam_id'),
             'image_path' => $steamData->getLocalImgPath(),
+            'description' => $steamData->description,
             'steam_review_score' => $steamData->reviewScore,
 
         ]);

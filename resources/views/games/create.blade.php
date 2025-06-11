@@ -19,7 +19,19 @@
                 <x-form-error name='title'/>
             </div>
         </x-form-field>
-        
+        <x-form-field>
+            <div>
+                <x-form-label for="tags">Game tags</x-form-label>
+                @foreach($allTags as $tag)
+                    <label>
+                        <input type="checkbox" name="tags[]" value="{{ $tag->id }}"
+                            {{ $allTags ? 'checked' : '' }}>
+                        {{ $tag->name }}
+                    </label>
+                @endforeach
+                <x-form-error name='tags'/>
+            </div>
+        </x-form-field>
         
         <x-form-button >Save</x-form-button>
     </form>

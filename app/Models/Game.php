@@ -11,7 +11,7 @@ class Game extends Model
     /** @use HasFactory<\Database\Factories\GameFactory> */
     use HasFactory;
 
-    protected $fillable = ['steam_id', 'title', 'image_path', "steam_review_score"];
+    protected $fillable = ['steam_id', 'title', 'image_path', "description", "steam_review_score"];
 
 
     public function reviews()
