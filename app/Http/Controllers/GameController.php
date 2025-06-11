@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\Game;
-use App\Services\SteamService;
 use Illuminate\Http\Request;
+use App\Services\SteamService;
 
 class GameController extends Controller
 {
@@ -30,6 +31,7 @@ class GameController extends Controller
         request()->validate([
             'steam_id' => ['required',],
             'title' => ['required'],
+
         ]);
         $steamData = new SteamService(request('steam_id'));
         // dd($steamData->reviewScore);
@@ -46,16 +48,18 @@ class GameController extends Controller
     }
     public function edit(Game $game)
     {
+        $allTags = Tag::all();
 
-
-        return view('games.edit', ['game' => $game]);
+        return view('games.edit', ['game' => $game, 'allTags' => $allTags]);
     }
     public function update(Game $game)
     {
         // dd('hey');
-        request()->validate([
+        $data = request()->validate([
             'steam_id' => ['required',],
             'title' => ['required'],
+            'tags' => 'array',
+            'tags.*' => 'exists:tags,id',
         ]);
 
         $game->update([
@@ -64,6 +68,7 @@ class GameController extends Controller
 
 
         ]);
+        $game->tags()->sync($data['tags'] ?? []);
 
         return redirect('/games/' . $game->id);
     }
