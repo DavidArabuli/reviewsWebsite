@@ -29,14 +29,16 @@ class GameController extends Controller
     }
     public function store()
     {
-        request()->validate([
+        $data = request()->validate([
             'steam_id' => ['required',],
             'title' => ['required'],
+            'tags' => 'array',
+            'tags.*' => 'exists:tags,id',
 
         ]);
         $steamData = new SteamService(request('steam_id'));
         // dd($steamData->reviewScore);
-        Game::create([
+        $game = Game::create([
             'title' => request('title'),
             'steam_id' => request('steam_id'),
             'image_path' => $steamData->getLocalImgPath(),
@@ -44,6 +46,7 @@ class GameController extends Controller
             'steam_review_score' => $steamData->reviewScore,
 
         ]);
+        $game->tags()->sync($data['tags'] ?? []);
         // dd($steamData->getLocalImgPath());
 
         return redirect('/games');

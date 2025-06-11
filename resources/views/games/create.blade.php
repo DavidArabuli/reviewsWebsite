@@ -24,8 +24,7 @@
                 <x-form-label for="tags">Game tags</x-form-label>
                 @foreach($allTags as $tag)
                     <label>
-                        <input type="checkbox" name="tags[]" value="{{ $tag->id }}"
-                            {{ $allTags ? 'checked' : '' }}>
+                        <input type="checkbox" name="tags[]" value="{{ $tag->id }}">
                         {{ $tag->name }}
                     </label>
                 @endforeach
