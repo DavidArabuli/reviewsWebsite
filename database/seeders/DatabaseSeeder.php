@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         $games = Game::factory(10)->create();
 
 
-        Review::factory(10)->create([
+        Review::factory(30)->create([
             'game_id' => fn() => $games->random()->id,
         ]);
     }

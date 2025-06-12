@@ -32,7 +32,8 @@ Route::controller(ReviewController::class)->group(function () {
     Route::get('/reviews/create', 'create')
         ->name('reviews.create')
         ->middleware('auth');
-    Route::post('/reviews', 'store')->middleware('auth');
+    Route::post('/reviews', 'store')
+        ->middleware('auth');
     Route::get('/reviews/{review}', 'show')->name('reviews.show');
     Route::get('/reviews/{review}/edit', 'edit')
         ->middleware('auth')

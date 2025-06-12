@@ -31,6 +31,9 @@
 <div class="screenshots-div">
 {{$screenshots ?? 'no screenshots available'}}
 </div>
+<div class="screenshots-div">
+{{$trailer ?? 'no trailer available'}}
+</div>
 <div class="functional-div">
 {{$functional ?? ''}}
 </div>

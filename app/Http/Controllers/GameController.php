@@ -6,6 +6,7 @@ use App\Models\Tag;
 use App\Models\Game;
 use Illuminate\Http\Request;
 use App\Services\SteamService;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class GameController extends Controller
 {
@@ -16,12 +17,41 @@ class GameController extends Controller
     public function show($id)
     {
         $game = Game::findOrFail($id);
-        $steamVideoUrl = new SteamService($game->steam_id)->getGameVideo();
+        $steamData = new SteamService($game->steam_id);
+        $steamVideoUrl = $steamData->getGameVideo();
+        $screenshotsArray = $steamData->screenshotsArray;
         // $reviewsteam = new SteamService($game->steam_id);
         // $reviewsteam->getReviewScore();
 
-        return view('games.show', ['game' => $game, 'steamVideoUrl' => $steamVideoUrl]);
+        return view('games.show', ['game' => $game, 'steamVideoUrl' => $steamVideoUrl, "screenshotsArray" => $screenshotsArray]);
     }
+    // public function show($id)
+    // {
+    //     $game = Game::findOrFail($id);
+    //     $steamData = new SteamService($game->steam_id);
+    //     $steamVideoUrl = $steamData->getGameVideo();
+
+    //     $screenshots = $steamData->screenshotsArray;
+
+
+    //     $currentPage = request()->get('page', 1);
+    //     $perPage = 3;
+
+
+    //     $pagedScreenshots = new LengthAwarePaginator(
+    //         array_slice($screenshots, ($currentPage - 1) * $perPage, $perPage),
+    //         count($screenshots),
+    //         $perPage,
+    //         $currentPage,
+    //         ['path' => request()->url(), 'query' => request()->query()]
+    //     );
+
+    //     return view('games.show', [
+    //         'game' => $game,
+    //         'steamVideoUrl' => $steamVideoUrl,
+    //         'screenshots' => $pagedScreenshots
+    //     ]);
+    // }
     public function create()
     {
         $allTags = Tag::all();

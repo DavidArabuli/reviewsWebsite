@@ -17,16 +17,16 @@
     
     @foreach ($reviews as $item)
         <x-review-preview>
-            <li>read our 
+            <p>read our 
                 <a href="/reviews/{{$item['id']}}">
     
                     {{$item['title']}}
                 </a>
                 A game rated as: {{$item['score']}}, 
                 <span>from: {{$item->user->name}}</span>
-            </li>
-            <li>content: {!!$item['content']!!}</li>
-            <br>
+            </p>
+            <p>content: {!!$item['content']!!}</p>
+            
         </x-review-preview>
             
         @endforeach

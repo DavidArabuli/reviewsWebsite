@@ -1,6 +1,10 @@
 @props(['active' => false])
 <a 
-class="{{ $active ? 'active nav-link' : 'nav-link' }}" 
+class="{{ $active ? 
+'rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white' 
+: 
+'nav-link rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-700 hover:text-white' 
+}}" 
 aria-current="{{ $active ? 'page' : 'false' }}"
 {{$attributes}}
 >{{$slot}}</a>

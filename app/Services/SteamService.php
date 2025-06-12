@@ -14,6 +14,7 @@ class SteamService
     public $reviewScore;
     public $localPath;
     public $description;
+    public $screenshotsArray;
 
 
     public function __construct($ID)
@@ -26,6 +27,7 @@ class SteamService
         $this->downloadImage();
         $this->getReviewScore();
         $this->getShortDescription();
+        $this->getScreenshotsURLArray();
     }
 
     private function set_image_url($steam_id)
@@ -78,6 +80,13 @@ class SteamService
         $response  = Http::withoutVerifying()->get($url)->json();
         // dd($response['query_summary']['review_score_desc']);
         $this->description = $response[$this->steam_id]['data']['short_description'];
+    }
+    public function getScreenshotsURLArray()
+    {
+        $url = "https://store.steampowered.com/api/appdetails?appids={$this->steam_id}";
+        $response  = Http::withoutVerifying()->get($url)->json();
+        // dd($response['query_summary']['review_score_desc']);
+        $this->screenshotsArray = $response[$this->steam_id]['data']['screenshots'];
     }
 
 
