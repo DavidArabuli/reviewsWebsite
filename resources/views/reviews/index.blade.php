@@ -16,7 +16,17 @@
     </form>
     
     @foreach ($reviews as $item)
-        <x-review-preview>
+    <x-review-preview href="/reviews/{{ $item['id'] }}">
+        <div>
+            Read our <strong>{{ $item['title'] }}</strong>,<br>
+            A game rated as: {{ $item['score'] }},<br>
+            <span>from: {{ $item->user->name }}</span><br>
+            <p>Content: {!! $item['content'] !!}</p>
+        </div>
+    </x-review-preview>
+    
+
+        {{-- <x-review-preview>
             <p>read our 
                 <a href="/reviews/{{$item['id']}}">
     
@@ -27,7 +37,7 @@
             </p>
             <p>content: {!!$item['content']!!}</p>
             
-        </x-review-preview>
+        </x-review-preview> --}}
             
         @endforeach
 

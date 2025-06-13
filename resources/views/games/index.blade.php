@@ -13,16 +13,23 @@
     </form> --}}
     
     @foreach ($games as $game)
-    <x-game-preview>
-
-        <li>read our 
-            <a href="/games/{{$game['id']}}">
-
-                {{$game['title']}}
-            </a>
-        </li>
-        
-        <br>
+    <x-game-preview href="/games/{{$game['id']}}">
+        <div class = "flex flex-col md:flex-row gap-10 justify-between">
+            <div >
+                <h1 class="text-2xl font-bold min-w-[8rem]">
+                    {{$game['title']}}
+                </h1>
+            </div>
+            <div class="flex-3 max-w-[40rem]">
+                <p class="text-base line-clamp-4">
+                    {{$game['description']}}
+                </p>
+            </div>
+            <div class="flex-none">
+                <img class="h-28" src="{{asset($game->image_path)}}" alt="steam image"></img>
+            </div>
+        </div>
+          
     </x-game-preview>
             
         @endforeach

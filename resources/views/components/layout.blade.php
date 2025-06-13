@@ -38,7 +38,7 @@
         <p class="text-red-600">
             Tailwind is working
         </p>
-        <div class="navlink-block border border-red-500">
+        <div class="navlink-block border border-red-500 flex flex-col md:flex-row">
 
             
             <x-nav-link class="text-red-600" href='/' :active="request()->is('/')">Home</x-nav-link>
