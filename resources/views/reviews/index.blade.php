@@ -17,12 +17,38 @@
     
     @foreach ($reviews as $item)
     <x-review-preview href="/reviews/{{ $item['id'] }}">
-        <div>
-            Read our <strong>{{ $item['title'] }}</strong>,<br>
-            A game rated as: {{ $item['score'] }},<br>
-            <span>from: {{ $item->user->name }}</span><br>
-            <p>Content: {!! $item['content'] !!}</p>
+        
+            {{-- <img src="{{$item->game['image_path']}}" class="absolute inset-0 w-full h-full object-cover opacity-40" alt="background"> --}}
+            
+    <div
+        class="absolute inset-0 w-full h-full bg-contain opacity-10 "
+        style="background-image: url('{{ asset($item->game->image_path) }}');">
+    </div>
+    <div class="relative z-10 flex flex-col gap-2">
+        <div class="flex justify-between items-center">
+            <span class="text-xl font-bold">{{ $item['title'] }}</span>
+            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-yellow-400 text-black text-md font-bold">
+                {{ $item['score'] }}
+            </div>
         </div>
+
+        <div class="text-sm text-gray-700">
+            From: {{ $item->user->name }}
+        </div>
+
+        <p class="text-base leading-snug text-gray-900">
+            {{ Str::limit(strip_tags($item['content']), 300) }}
+        </p>
+    </div>
+    {{-- <div class="relative z-10 flex flex-row justify-between gap-4">
+        <span><strong>{{ $item['title'] }}</strong></span>
+        <span>from: {{ $item->user->name }}</span>
+        <p>Content: {!! $item['content'] !!}</p>
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-yellow-400 text-black text-lg font-bold shrink-0">
+            {{ $item['score'] }}
+        </div>
+    </div> --}}
+        
     </x-review-preview>
     
 

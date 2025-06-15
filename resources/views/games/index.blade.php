@@ -11,30 +11,30 @@
             <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>Lowest First</option>
         </select>
     </form> --}}
-    
-    @foreach ($games as $game)
-    <x-game-preview href="/games/{{$game['id']}}">
-        <div class = "flex flex-col md:flex-row gap-10 justify-between">
-            <div >
-                <h1 class="text-2xl font-bold min-w-[8rem]">
-                    {{$game['title']}}
-                </h1>
+    <article class="flex flex-col items-center">
+
+        @foreach ($games as $game)
+        <x-game-preview href="/games/{{$game['id']}}">
+            <div class = "flex flex-col md:flex-row gap-10 justify-between">
+                <div >
+                    <h1 class="text-2xl font-bold min-w-[10rem] capitalize">
+                        {{$game['title']}}
+                    </h1>
+                </div>
+                <div class="flex-3 max-w-[40rem]">
+                    <p class="text-base line-clamp-4">
+                        {{$game['description']}}
+                    </p>
+                </div>
+                <div class="flex-none">
+                    <img class="h-28" src="{{asset($game->image_path)}}" alt="steam image"></img>
+                </div>
             </div>
-            <div class="flex-3 max-w-[40rem]">
-                <p class="text-base line-clamp-4">
-                    {{$game['description']}}
-                </p>
-            </div>
-            <div class="flex-none">
-                <img class="h-28" src="{{asset($game->image_path)}}" alt="steam image"></img>
-            </div>
-        </div>
-          
-    </x-game-preview>
-            
+        </x-game-preview>
+                
         @endforeach
-    <br>
-    <p>=====</p>
+    </article>
+    
     @can('edit', $game)
     <a href="/games/create">add a new game</a>
     <p>=====</p>

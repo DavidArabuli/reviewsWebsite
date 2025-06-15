@@ -4,22 +4,24 @@
     </x-slot:heading>
     <h1>hello from single tag page</h1>
     
-    this tag`s title is {{$tag->name}}
+    <div class="text-2xl font-extrabold text-blue-900">
+        {{$tag->name}}
+        </div>
     <br>
     all games associated with this tag
     
     @foreach ($tag->games as $game)
-        <li>
-        <a href="{{route('games.show', ['game' => $game->id])}}">{{$game->title}}</a>   
-        </li>
+        
+        <x-link href="{{route('games.show', ['game' => $game->id])}}">{{$game->title}}</x-link>   
+        
     @endforeach
-    <br>
+    
     all reviews associated with this tag
     
     @foreach ($tag->reviews as $review)
-        <li>
-        <a href="{{route('reviews.show', ['review' => $review->id])}}">{{$review->title}}</a>   
-        </li>
+        
+        <x-link href="{{route('reviews.show', ['review' => $review->id])}}">{{$review->title}}</x-link>   
+        
     @endforeach
         <br>
         <br>

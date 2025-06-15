@@ -18,7 +18,7 @@ class ReviewController extends Controller
     public function index()
     {
         $sort = request('sort', 'desc');
-        $query = Review::with(['user', 'tags']);
+        $query = Review::with(['user', 'game', 'tags']);
 
 
         if (request()->has('tag')) {

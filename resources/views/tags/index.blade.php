@@ -5,17 +5,10 @@
     <h1>hello from tags page</h1>
     
     @foreach ($tags as $item)
-        <li> 
-            <a href="/tags/{{$item['id']}}">
-
-                {{$item['name']}}
-            </a>
-            
-        </li>
-        
-        <br>
-            
-        @endforeach
+        <x-tag href="/tags/{{$item['id']}}"> 
+            {{$item['name']}}
+        </x-tag>
+    @endforeach
 
  <br>
  @can('edit', $tag)
