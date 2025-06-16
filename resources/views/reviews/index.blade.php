@@ -26,15 +26,16 @@
     </div>
     <div class="relative z-10 flex flex-col gap-2">
         <div class="flex justify-between items-center">
-            <span class="text-xl font-bold">{{ $item['title'] }}</span>
+            <x-title>{{ $item['title'] }}</x-title>
             <div class="flex items-center justify-center w-10 h-10 rounded-full bg-yellow-400 text-black text-md font-bold">
                 {{ $item['score'] }}
             </div>
         </div>
-
+        
         <div class="text-sm text-gray-700">
             From: {{ $item->user->name }}
         </div>
+        
 
         <p class="text-base leading-snug text-gray-900">
             {{ Str::limit(strip_tags($item['content']), 300) }}

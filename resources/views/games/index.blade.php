@@ -16,11 +16,11 @@
         @foreach ($games as $game)
         <x-game-preview href="/games/{{$game['id']}}">
             <div class = "flex flex-col md:flex-row gap-10 justify-between">
-                <div >
-                    <h1 class="text-2xl font-bold min-w-[10rem] capitalize">
+                <x-title >
+                    <h1 class="min-w-[10rem]">
                         {{$game['title']}}
                     </h1>
-                </div>
+                </x-title>
                 <div class="flex-3 max-w-[40rem]">
                     <p class="text-base line-clamp-4">
                         {{$game['description']}}

@@ -1,3 +1,3 @@
-<a href="{{ $href }}" class="bg-red-200 mt-1 flex flex-col items-start border border-red-500 p-4 rounded-r-full hover:bg-red-300 cursor-pointer max-w-[8rem]">
+<a href="{{ $href }}" class="bg-indigo-100 mt-1 flex justify-center text-center border border-indigo-700 outline outline-offset-4 p-2 rounded ml-1  hover:bg-indigo-100 cursor-pointer max-w-[8rem]">
     {{ $slot }}
 </a>

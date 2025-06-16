@@ -4,9 +4,9 @@
     </x-slot:heading>
     <h1>hello from single tag page</h1>
     
-    <div class="text-2xl font-extrabold text-blue-900">
+    <x-title> 
         {{$tag->name}}
-        </div>
+        </x-title>
     <br>
     all games associated with this tag
     
