@@ -1,1 +1,1 @@
-<input {{$attributes->merge(['class'=>'input bg-gray-300 mt-3 border-4 border-blue-50'])}}>
+<input class=" bg-indigo-200 rounded ">
