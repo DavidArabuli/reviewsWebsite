@@ -12,7 +12,9 @@ class GameController extends Controller
 {
     public function index()
     {
-        return view('games.index', ['games' => Game::all()]);
+        $query = Game::query();
+        $games = $query->paginate(5);
+        return view('games.index', ['games' => $games]);
     }
     public function show($id)
     {

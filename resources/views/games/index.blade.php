@@ -40,5 +40,9 @@
     <p>=====</p>
     <br>
     @endcan
+
+    <div class="mt-2">
+        {{ $games->links('components.pagination') }}
+    </div>
     
 </x-layout>
