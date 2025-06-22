@@ -10,44 +10,23 @@
     </x-slot:title>
     <x-slot:steamImage>
         this game`s steam Pic is following
-        <img src="{{asset($game->image_path)}}" alt="steam image"></img>
+        <img class="mt-4 mb-4 border border-blue-800  rounded 
+        shadow-xl/30 ring" 
+        src="{{asset($game->image_path)}}" 
+        alt="steam image"></img>
     </x-slot:steamImage>
     <x-slot:description>
         {{$game->description}}
     </x-slot:description>
-
-    {{-- <x-slot:screenshots>
-        @foreach($screenshotsArray as $screenshotThumbnail)
-        <div>
-            <img src="{{$screenshotThumbnail['path_thumbnail']}}" alt="game screenshot" >
-        </div>
-        @endforeach
-    </x-slot:screenshots> --}}
-
-<!-- Swiper container -->
-
-
-    {{-- <x-slot:screenshots>
-    @foreach($screenshots as $screenshot)
-        <div>
-            <img src="{{ $screenshot['path_thumbnail'] }}" alt="game screenshot">
-        </div>
-    @endforeach
-
-    <div class="mt-4">
-        {{ $screenshots->links() }}
-    </div>
-</x-slot:screenshots> --}}
-
     <x-slot:tags>
-        this game`s tags:
+        
         @foreach($game->tags as $tag)
-            <br>
-            <a href="{{route('tags.show', $tag)}}">{{$tag['name']}}</a>
+            
+            <x-tag href="{{route('tags.show', $tag)}}">{{$tag['name']}}</x-tag>
         @endforeach
     </x-slot:tags>
     <x-slot:steam_review_score>
-        This reviews score is {{ $game->steam_review_score }}
+        Steam review score:  {{ $game->steam_review_score }}
     </x-slot:steam_review_score>
     <x-slot:steam_id>
         this game`s steam ID is {{ $game->steam_id }}
@@ -72,8 +51,24 @@
         <x-button href='/games/{{$game->id}}/edit'>Edit game</x-button>
         @endcan
     </x-slot:functional>
-    </x-game-article>
-    <div class="swiper mySwiper">
+    <x-slot:swiper>
+        <div class="swiper mySwiper w-full max-w-screen-lg">
+            <div class="swiper-wrapper">
+              @foreach($screenshotsArray as $screenshot)
+                <div class="swiper-slide flex justify-center items-center">
+                  <img src="{{ $screenshot['path_thumbnail'] }}"
+                       alt="screenshot"
+                       class="rounded-lg w-full h-auto object-contain" />
+                </div>
+              @endforeach
+            </div>
+          
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </x-slot:swiper>  
+          
+    {{-- <div class="swiper mySwiper">
         <div class="swiper-wrapper">
           @foreach($screenshotsArray as $screenshot)
           <div class="swiper-slide flex justify-center items-center">
@@ -82,10 +77,11 @@
         </div>
           @endforeach
         </div>
-        <!-- Arrows -->
+        
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
-      </div>
+      </div> --}}
+    </x-game-article>
     {{-- <iframe src="https://store.steampowered.com/widget/2187290/" width="646" height="190"></iframe> --}}
 
 </x-layout>

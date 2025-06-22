@@ -15,8 +15,32 @@
     {{-- swiper --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-
 <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      new Swiper('.mySwiper', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        centeredSlides: true,
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          }
+        }
+      });
+    });
+  </script>
+  
+{{-- <script>
     document.addEventListener('DOMContentLoaded', function () {
         new Swiper('.mySwiper', {
             slidesPerView: 3,
@@ -28,7 +52,7 @@
             loop: true,
         });
     });
-</script>
+</script> --}}
 
 {{-- swiper end --}}
     <title>{{$heading}}</title>
