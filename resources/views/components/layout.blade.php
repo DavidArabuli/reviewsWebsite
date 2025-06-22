@@ -39,6 +39,17 @@
       });
     });
   </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('dropdown-menu');
+
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    });
+</script>
+
   
 {{-- <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -58,11 +69,15 @@
     <title>{{$heading}}</title>
 </head>
 <body class="body">
-    <nav class="nav">
-        <p class="text-red-600">
-            Tailwind is working
-        </p>
-        <div class="navlink-block border border-red-500 flex flex-col md:flex-row">
+    <nav class="nav m-2">
+        <button
+            id="menu-toggle"
+            class="md:hidden w-full px-4 py-2 bg-indigo-100 border border-indigo-700 outline outline-offset-1 p-2 ml-1  hover:bg-indigo-500 hover:text-white cursor-pointer rounded mx-auto">
+            toggle menu
+        </button>
+        
+        
+        <div id="dropdown-menu" class="grid grid-cols-2 gap-2 md:flex md:flex-row md:space-x-4 md:space-y-0 mt-3">
 
             
             <x-nav-link class="text-red-600" href='/' :active="request()->is('/')">Home</x-nav-link>
@@ -85,9 +100,6 @@
             <x-nav-link href="/admin">Admin dashboard</x-nav-link>
             
             @endif
-        </div>
-        <div>
-
             <form action="/logout" method="POST" >
                 @csrf
                 <x-form-button>Logout</x-form-button>
@@ -95,10 +107,11 @@
             @endauth
         </div>
         
+        
     </nav>
     {{$slot}}
     <br>
 
-     
+
 </body>
 </html>
