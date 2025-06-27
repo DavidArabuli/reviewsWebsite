@@ -8,7 +8,7 @@
         This reviews title is {{ $review->title }}
     </x-slot:title>
     <x-slot:steamImage>
-        <img class="steamImage" src="{{asset($image_path)}}" alt="steam image"></img>
+        <x-gameImg src="{{asset($image_path)}}" alt="steam image"></x-gameImg>
     </x-slot:steamImage>
     <x-slot:content>
         {!! $review->content !!}
@@ -32,9 +32,7 @@
 
     <x-slot:tags>
         @foreach ($review->tags as $tag)
-            <li>
-            <a href="{{route('reviews.index', ['tag' => $tag->name])}}">{{$tag->name}}</a>   
-            </li>
+            <x-tag href="{{route('reviews.index', ['tag' => $tag->name])}}">{{$tag->name}}</x-tag>   
         @endforeach
     </x-slot:tags>
         <br>

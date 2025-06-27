@@ -10,10 +10,9 @@
     </x-slot:title>
     <x-slot:steamImage>
         this game`s steam Pic is following
-        <img class="mt-4 mb-4 border border-blue-800  rounded 
-        shadow-xl/30 ring" 
+        <x-gameImg  
         src="{{asset($game->image_path)}}" 
-        alt="steam image"></img>
+        ></x-gameImg>
     </x-slot:steamImage>
     <x-slot:description>
         {{$game->description}}
@@ -25,12 +24,15 @@
             <x-tag href="{{route('tags.show', $tag)}}">{{$tag['name']}}</x-tag>
         @endforeach
     </x-slot:tags>
+
     <x-slot:steam_review_score>
         Steam review score:  {{ $game->steam_review_score }}
     </x-slot:steam_review_score>
+
     <x-slot:steam_id>
         this game`s steam ID is {{ $game->steam_id }}
     </x-slot:steam_id>
+
     <x-slot:trailer>
         @if ($steamVideoUrl)
         <video width="640" height="360" controls>
@@ -54,15 +56,15 @@
     <x-slot:swiper>
         <div class="swiper mySwiper w-full max-w-screen-lg">
             <div class="swiper-wrapper">
-              @foreach($screenshotsArray as $screenshot)
+            @foreach($screenshotsArray as $screenshot)
                 <div class="swiper-slide flex justify-center items-center">
-                  <img src="{{ $screenshot['path_thumbnail'] }}"
-                       alt="screenshot"
-                       class="rounded-lg w-full h-auto object-contain" />
+                <img src="{{ $screenshot['path_thumbnail'] }}"
+                    alt="screenshot"
+                    class="rounded-lg w-full h-auto object-contain" />
                 </div>
-              @endforeach
+            @endforeach
             </div>
-          
+        
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
         </div>

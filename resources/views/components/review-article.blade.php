@@ -1,4 +1,4 @@
-<div {{$attributes->merge(['class'=>'article'])}}>
+<article class="m-4">
     <x-title class="title">
         {{ $title ?? 'Default Title' }}
     </x-title>
@@ -39,4 +39,4 @@
 <div class="functional-div">
 {{$functional ?? ''}}
 </div>
-</div>
+</article>
