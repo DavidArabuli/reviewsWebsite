@@ -37,6 +37,7 @@ class ReviewController extends Controller
     {
         $game_id = $request->query('game_id');
         $steam_id = $request->query('steam_id');
+        // dd($request);
         return view('reviews.create', ['game_id' => $game_id, 'steam_id' => $steam_id, 'tags' => Tag::all()]);
     }
 
@@ -122,6 +123,7 @@ class ReviewController extends Controller
             'content' => request('content'),
             'score' => request('score'),
         ]);
+
         return redirect('/reviews/' . $review->id);
     }
 

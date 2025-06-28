@@ -62,7 +62,9 @@
     </x-slot:swiper>  
     <x-slot:functional>
             @can('create', \App\Models\Review::class)
-            <x-button href="{{route('reviews.create', ['game_id'=>$game->id, 'steam_id' =>$game->steam_id ] )}}">write a review for this game</x-button>
+            <x-button href="{!! route('reviews.create', ['game_id' => $game->id, 'steam_id' => $game->steam_id]) !!}">
+                write a review for this game
+            </x-button>
             @endcan 
         
             @can('edit', $game)

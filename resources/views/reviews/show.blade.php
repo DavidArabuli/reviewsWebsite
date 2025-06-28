@@ -11,6 +11,7 @@
         <x-gameImg src="{{asset($image_path)}}" alt="steam image"></x-gameImg>
     </x-slot:steamImage>
     <x-slot:content>
+        
         {!! $review->content !!}
     </x-slot:content>
 
@@ -19,14 +20,15 @@
     </x-slot:score>
 
     <x-slot:author>
-        this review`s author is {{ $review->user->name }}
-    </x-slot:author>
+    this review’s author is <x-user-link :user="$review->user" />
+</x-slot:author>
     
     <x-slot:steamID>
         this review`s steam ID is {{ $review->steam_id }}
     </x-slot:steamID>
-        <x-slot:otherReviews>
-            Check all of his reviews: 
+
+    <x-slot:otherReviews>
+        Check all of his reviews: 
         <a href="{{route('profile.show', $user)}}">Check all of his reviews </a>
     </x-slot:otherReviews>
 
