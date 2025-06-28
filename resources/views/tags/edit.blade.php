@@ -7,7 +7,7 @@
         @csrf
         @method('PATCH')
         <div>
-            <label for="tag">tag tag</label>
+            <label for="tag">tag</label>
             <input 
             id="tag" 
             name="tag" 
@@ -20,9 +20,9 @@
             @enderror
         </div>
         
-        <button type="submit" form="delete-form">DELETE</button>
-        <button type="submit">update</button>
-        <a href="/tags/{{$tag->id}}">cancel</a>
+        <x-button class="bg-red-300 hover:bg-red-700 hover:text-white" type="submit" form="delete-form">delete</x-button>
+        <x-button type="submit">update</x-button>
+        <x-button href="/tags/{{$tag->id}}">cancel</x-button>
     </form>
     <form action="/tags/{{$tag->id}}" method="POST" id="delete-form" class="hidden">      
         @csrf

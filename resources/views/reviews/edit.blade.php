@@ -59,9 +59,9 @@
                 </ul>
             @endif
         </div> --}}
-        <button type="submit" form="delete-form">DELETE</button>
-        <button type="submit">update</button>
-        <a href="/reviews/{{$review->id}}">cancel</a>
+        <x-button class="bg-red-300 hover:bg-red-700 hover:text-white" type="submit" form="delete-form">delete</x-button>
+        <x-button type="submit">update</x-button>
+        <x-button   href="/reviews/{{$review->id}}">cancel</x-button>
     </form>
     <form action="/reviews/{{$review->id}}" method="POST" id="delete-form" class="hidden">      
         @csrf
