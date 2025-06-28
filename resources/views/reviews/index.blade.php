@@ -2,19 +2,21 @@
     <x-slot:heading>
         Reviews page
     </x-slot:heading>
-    <h1>hello from reviews page</h1>
-
-    <form method="GET" action="{{ route('reviews.index') }}">
-        @if(request('tag'))
-        <input type="hidden" name="tag" value="{{ request('tag') }}">
-        @endif
-        <label for="sort">Sort by Score:</label>
-        <select name="sort" id="sort" onchange="this.form.submit()">
-            <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>Highest First</option>
-            <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>Lowest First</option>
-        </select>
-    </form>
     <article class="flex flex-col items-center">
+    <x-page-header>Check out our games reviews</x-page-header>
+        
+
+            <form class="mb-2" method="GET" action="{{ route('reviews.index') }}">
+                @if(request('tag'))
+                <input type="hidden" name="tag" value="{{ request('tag') }}">
+                @endif
+                <x-form-label for="sort">Sort by Score:</x-form-label>
+                <select class="border rounded" name="sort" id="sort" onchange="this.form.submit()">
+                    <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>Highest Score First</option>
+                    <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>Lowest Score First</option>
+                </select>
+            </form>
+        
 
         @foreach ($reviews as $item)
         <x-review-preview href="/reviews/{{ $item['id'] }}">

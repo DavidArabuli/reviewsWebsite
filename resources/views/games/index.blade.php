@@ -2,7 +2,8 @@
     <x-slot:heading>
         Games page
     </x-slot:heading>
-    <h1>hello from Games page</h1>
+    <article class="flex flex-col items-center">
+    <x-page-header>games in our database</x-page-header>
 
     {{-- <form method="GET" action="{{ route('reviews.index') }}">
         <label for="sort">Sort by Score:</label>
@@ -11,7 +12,6 @@
             <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>Lowest First</option>
         </select>
     </form> --}}
-    <article class="flex flex-col items-center">
 
         @foreach ($games as $game)
         <x-game-preview href="/games/{{$game['id']}}">

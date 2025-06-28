@@ -12,12 +12,12 @@
                 {{$item['name']}}
             </x-tag>
         @endforeach
+        <br>
+        @can('edit', $tag)
+        <x-button href="{{route('tags.create')}}">create new tag</x-button>
+        
+        @endcan
     </div>
 
- <br>
- @can('edit', $tag)
- <a href="{{route('tags.create')}}">create new tag</a>
- <br>
- @endcan
     
 </x-layout>
