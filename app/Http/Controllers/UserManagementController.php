@@ -39,9 +39,13 @@ class UserManagementController extends Controller
         );
     }
     public function update(User $user)
-    {
-        $role = (int) request('role');
-        $user->is_editor = $role;
+    { // validate
+        request()->validate([
+            'role' => ['required'],
+        ]);
+
+
+        $user->is_editor = request('role');
         $user->save();
         return redirect('admin/users/' . $user->id);
     }

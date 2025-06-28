@@ -17,8 +17,10 @@
         
             @csrf
             @method('PATCH')
-            <x-form-label>Edit role</x-form-label>
-            <x-form-input name='role' type='number'/>
+            <x-form-label> user is an editor</x-form-label>
+            <input type="hidden" name="role" value="0">
+
+            <input name='role' type='checkbox' value="1" {{ $user->is_editor ? 'checked' : '' }}/>
             <x-form-button>submit</x-form-button>
         </form>
     </x-form-field>
