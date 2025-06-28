@@ -44,15 +44,7 @@
         @endif
     </x-slot:trailer>
 
-    <x-slot:functional>
-        @can('create', \App\Models\Review::class)
-        <x-button href="{{route('reviews.create', ['game_id'=>$game->id, 'steam_id' =>$game->steam_id ] )}}">write a review for this game</x-button>
-        @endcan 
     
-        @can('edit', $game)
-        <x-button href='/games/{{$game->id}}/edit'>Edit game</x-button>
-        @endcan
-    </x-slot:functional>
     <x-slot:swiper>
         <div class="swiper mySwiper w-full max-w-screen-lg">
             <div class="swiper-wrapper">
@@ -64,12 +56,20 @@
                 </div>
             @endforeach
             </div>
-        
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
         </div>
     </x-slot:swiper>  
-          
+    <x-slot:functional>
+            @can('create', \App\Models\Review::class)
+            <x-button href="{{route('reviews.create', ['game_id'=>$game->id, 'steam_id' =>$game->steam_id ] )}}">write a review for this game</x-button>
+            @endcan 
+        
+            @can('edit', $game)
+            <x-button href='/games/{{$game->id}}/edit'>Edit game</x-button>
+            @endcan
+    </x-slot:functional>
+
     {{-- <div class="swiper mySwiper">
         <div class="swiper-wrapper">
           @foreach($screenshotsArray as $screenshot)

@@ -14,5 +14,5 @@
     this user`s role is {{$user->is_editor}}
     <br>
     
-    <x-nav-link href="{{route('admin.users.edit', $user)}}">edit user</x-nav-link>
+    <x-button href="{{route('admin.users.edit', $user)}}">edit user</x-button>
 </x-layout>

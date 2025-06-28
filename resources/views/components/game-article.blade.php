@@ -33,7 +33,7 @@
 <div >
 {{$swiper ?? 'no screenshots available'}}
 </div>
-<div class="functional-div">
+<div class="functional-div mt-4">
 {{$functional ?? ''}}
 </div>
 </article>

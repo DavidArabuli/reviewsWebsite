@@ -23,11 +23,11 @@
         <x-link href="{{route('reviews.show', ['review' => $review->id])}}">{{$review->title}}</x-link>   
         
     @endforeach
-        <br>
-        <br>
-    @can('edit', $tag)
-        <x-button href="{{route('tags.edit', $tag)}}">Edit tag</x-button>
-    @endcan
+        <section class="p-2 mt-3">
+            @can('edit', $tag)
+                <x-button href="{{route('tags.edit', $tag)}}">Edit tag</x-button>
+            @endcan
+        </section>
     
     
 </x-layout>
