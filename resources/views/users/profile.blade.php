@@ -2,14 +2,12 @@
     <x-slot:heading>
         Profile page
     </x-slot:heading>
-    <h1>hello from PROFILE page</h1>
-  
-    @foreach ($reviews as $item)
-        <li>  
-            <a href="{{route('reviews.show', $item->id)}}">{{$item['title']}}</a>
-            
-        </li>
-<br>
+    <x-sub-header>All reviews from this author:</x-sub-header>
+    <div class="ml-3">
+
+        @foreach ($reviews as $item)
+            <x-link href="{{route('reviews.show', $item->id)}}">{{$item['title']}}</x-link>
         @endforeach
+    </div>
     
 </x-layout>

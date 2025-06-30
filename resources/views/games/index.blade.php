@@ -33,13 +33,13 @@
         </x-game-preview>
                 
         @endforeach
-    </article>
+        <div class="m-4">
     
-    @can('edit', $game)
-    <a href="/games/create">add a new game</a>
-    <p>=====</p>
-    <br>
-    @endcan
+            @can('edit', $game)
+            <x-button href="/games/create">add a new game</x-button>
+            @endcan
+        </div>
+    </article>
 
     <div class="mt-2">
         {{ $games->links('components.pagination') }}
