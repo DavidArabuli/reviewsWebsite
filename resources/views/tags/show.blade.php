@@ -2,13 +2,16 @@
     <x-slot:heading>
         Single tag page
     </x-slot:heading>
-    <h1>hello from single tag page</h1>
     
-    <x-title> 
-        {{$tag->name}}
-        </x-title>
-    <br>
-    all games associated with this tag
+    <div class="ml-5">
+
+        <x-title> 
+            {{$tag->name}}
+            </x-title>
+    </div>
+    <x-sub-header>
+        all games associated with this tag:
+    </x-sub-header>
     
     @foreach ($tag->games as $game)
         
@@ -16,7 +19,10 @@
         
     @endforeach
     
-    all reviews associated with this tag
+    <x-sub-header>
+        all reviews associated with this tag:
+    </x-sub-header>
+    
     
     @foreach ($tag->reviews as $review)
         

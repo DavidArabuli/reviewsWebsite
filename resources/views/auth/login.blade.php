@@ -8,7 +8,7 @@
             @csrf
             
             <h1 class="font-bold mb-1">Login:</h1>
-            <x-form-field>
+            <x-login-field>
                 <div class="flex flex-row justify-between items-center">
 
                     <x-form-label for="email">email:</x-form-label>
@@ -16,7 +16,7 @@
                 </div>
                     <x-form-error name='email'/>
                 
-            </x-form-field>
+            </x-login-field>
             {{-- <x-form-field>
             
                     <x-form-label for="password">password:</x-form-label>
@@ -24,13 +24,13 @@
                     <x-form-error name='password'/>
             
             </x-form-field> --}}
-            <x-form-field>
+            <x-login-field>
                 <div class="flex flex-row justify-between items-center">
                     <x-form-label for="password">password:</x-form-label>
                     <x-form-input id="password" name="password" type="password" />
                 </div>
                 <x-form-error name='password' />
-            </x-form-field>
+            </x-login-field>
             
             
             

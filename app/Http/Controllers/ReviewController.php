@@ -61,6 +61,7 @@ class ReviewController extends Controller
             'content' => ['required', 'string', 'max:5000'],
             'score' => ['required'],
             'tag' => 'exists:tags,id',
+            'screenshots' => 'array|max:5',
             'screenshots.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048'
 
         ]);

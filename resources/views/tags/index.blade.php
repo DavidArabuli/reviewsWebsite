@@ -3,7 +3,7 @@
         tags page
     </x-slot:heading>
     <x-title >
-        <h1 class="mt-4 ml-4">All Tags</h1>
+        <h1 class="mt-4 ml-5">All Tags</h1>
     </x-title>
     <div class="mt-4 ml-4 ">
 

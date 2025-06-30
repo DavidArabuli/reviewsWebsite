@@ -3,3 +3,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    trix-toolbar [data-trix-button-group="file-tools"] {
+      display: none !important;
+    }
+  }
