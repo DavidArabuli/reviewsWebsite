@@ -1,15 +1,15 @@
 <x-layout>
     <x-slot:heading>
-        Single game page
+        Game page
     </x-slot:heading>
-    <h1>hello from single game page!!!</h1>
+    
     
     <x-game-article>
         <x-slot:title>
-        This game`s title is {{ $game->title }}
+        {{ $game->title }}
     </x-slot:title>
     <x-slot:steamImage>
-        this game`s steam Pic is following
+        
         <x-gameImg  
         src="{{asset($game->image_path)}}" 
         ></x-gameImg>

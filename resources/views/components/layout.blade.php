@@ -109,7 +109,10 @@
         
         
     </nav>
-    {{$slot}}
+    <div class="m-2">
+      {{$slot}}
+
+    </div>
     <br>
 
 

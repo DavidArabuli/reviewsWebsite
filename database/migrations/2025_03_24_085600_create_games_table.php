@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('steam_review_score');
             $table->string('image_path')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

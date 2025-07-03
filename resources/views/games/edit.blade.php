@@ -35,7 +35,14 @@
         </x-form-field>
         
         
-        <x-form-button >Save</x-form-button>
+        <x-button class="bg-red-300 hover:bg-red-700 hover:text-white" type="submit" form="delete-form">delete</x-button>
+        <x-button type="submit">update</x-button>
+        <x-button   href="/games/{{$game->id}}">cancel</x-button>
+
+    </form>
+    <form action="/games/{{$game->id}}" method="POST" id="delete-form" class="hidden">      
+        @csrf
+        @method('DELETE')
     </form>
 
        

@@ -25,6 +25,7 @@
             class="absolute inset-0 w-full h-full bg-contain opacity-10 "
             style="background-image: url('{{ asset($item->game->image_path) }}');">
         </div>
+        
         <div class="relative z-10 flex flex-col gap-2">
             <div class="flex justify-between items-center">
                 <x-title>{{ $item['title'] }}</x-title>
