@@ -61,7 +61,7 @@
         </div>
     </x-slot:swiper>  
     <x-slot:functional>
-            @can('create', \App\Models\Review::class)
+        @can('create', \App\Models\Review::class)
             <x-button href="{!! route('reviews.create', ['game_id' => $game->id, 'steam_id' => $game->steam_id]) !!}">
                 write a review for this game
             </x-button>
@@ -72,19 +72,6 @@
             @endcan
     </x-slot:functional>
 
-    {{-- <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          @foreach($screenshotsArray as $screenshot)
-          <div class="swiper-slide flex justify-center items-center">
-            <img src="{{ $screenshot['path_thumbnail'] }}" alt="screenshot"
-                 class="rounded-lg max-w-full h-auto object-contain" />
-        </div>
-          @endforeach
-        </div>
-        
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-      </div> --}}
     </x-game-article>
     {{-- <iframe src="https://store.steampowered.com/widget/2187290/" width="646" height="190"></iframe> --}}
 

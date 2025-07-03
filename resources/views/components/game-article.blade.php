@@ -25,16 +25,16 @@ shadow-xl/30 ring">
 <div class="tags-div">
 {{$tags ?? 'no tags available'}}
 </div>
-<div class="screenshots-div">
+{{-- <div class="screenshots-div">
 {{$screenshots ?? 'no screenshots available'}}
-</div>
-<div class="mt-4 mb-4 border border-blue-800 rounded shadow-xl/30 ring inline-block w-fit" >
+</div> --}}
+<div class="mt-6 mb-6 border border-blue-800 rounded shadow-xl/10 ring inline-block w-fit" >
 {{$trailer ?? 'no trailer available'}}
 </div>
-<div >
+<div class="mt-4 mb-4">
 {{$swiper ?? 'no screenshots available'}}
 </div>
-<div class="functional-div mt-4">
+<div class="functional-div mt-4 mb-4">
 {{$functional ?? ''}}
 </div>
 </article>
