@@ -10,7 +10,7 @@ class ReviewPolicy
 {
     public function create(User $user): bool
     {
-        return true;
+        return $user->is_editor;
     }
 
     public function edit(User $user, Review $review): bool

@@ -42,7 +42,7 @@
     <x-slot:screenshots>
             @if ($review->screenshots && count($review->screenshots) > 0)
             @foreach ($review->screenshots as $screenshot)
-                <img src="{{ asset('storage/' . $screenshot) }}" alt="Screenshot">
+                <x-gameImg src="{{ asset('storage/' . $screenshot) }}" alt="Screenshot"></x-gameImg>
             @endforeach
             @else
             <p>No screenshots available.</p>
