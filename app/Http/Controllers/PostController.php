@@ -37,29 +37,29 @@ class PostController extends Controller
             'title' => ['required', 'min:3', 'max:200'],
             'content' => ['required', 'string', 'max:5000'],
 
-            // 'screenshots' => 'array|max:5',
-            // 'screenshots.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048'
+            'screenshots' => 'array|max:5',
+            'screenshots.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048'
 
         ]);
-        Post::create([
+        $post = Post::create([
             'title' => request('title'),
             'content' => request('content'),
 
             'user_id' => auth()->id(),
         ]);
-        // if (request()->hasFile('screenshots')) {
-        //     $screenshotsPaths = [];
+        if (request()->hasFile('screenshots')) {
+            $screenshotsPaths = [];
 
-        //     foreach (request()->file('screenshots') as $screenshot) {
-        //         $path = $screenshot->store('screenshots', 'public');
-        //         $screenshotsPaths[] = $path;  // Collect all the paths
-        //     }
+            foreach (request()->file('screenshots') as $screenshot) {
+                $path = $screenshot->store('screenshots', 'public');
+                $screenshotsPaths[] = $path;  // Collect all the paths
+            }
 
-        //     // Save the collected file paths to the post
-        //     $post->update([
-        //         'screenshots' => $screenshotsPaths
-        //     ]);
-        // }
+            // Save the collected file paths to the post
+            $post->update([
+                'screenshots' => $screenshotsPaths
+            ]);
+        }
 
 
 

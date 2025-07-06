@@ -31,7 +31,7 @@ Route::get('test', function () {
 
 Route::controller(PostController::class)->group(function () {
     Route::get('/', 'index')->name('posts.index');
-    Route::get('/home/create', 'create')->name('posts.create')->middleware('auth');
+    Route::get('/home/create', 'create')->name('posts.create')->middleware('auth')->can('create', 'post');
     Route::post('/home', 'store')->middleware('auth');
     Route::get('/home/{post}', 'show')->name('posts.show');
     Route::get('/home/{post}/edit', 'edit')->name('')->middleware('auth')->can('edit', 'review');
