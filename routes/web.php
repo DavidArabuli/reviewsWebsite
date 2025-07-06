@@ -31,12 +31,12 @@ Route::get('test', function () {
 
 Route::controller(PostController::class)->group(function () {
     Route::get('/', 'index')->name('posts.index');
-    Route::get('/home/create', 'create')->name('posts.create')->middleware('auth')->can('create', 'post');
-    Route::post('/home', 'store')->middleware('auth');
-    Route::get('/home/{post}', 'show')->name('posts.show');
-    Route::get('/home/{post}/edit', 'edit')->name('')->middleware('auth')->can('edit', 'review');
-    Route::patch('/home/{post}', 'update')->middleware('auth');
-    Route::delete('/home/{post}', 'destroy')->middleware('auth')->can('edit', 'review');
+    Route::get('/posts/create', 'create')->name('posts.create')->middleware('auth')->can('create', App\Models\Post::class);
+    Route::post('/posts', 'store')->middleware('auth');
+    Route::get('/posts/{post}', 'show')->name('posts.show');
+    Route::get('/posts/{post}/edit', 'edit')->name('')->middleware('auth')->can('edit', 'review');
+    Route::patch('/posts/{post}', 'update')->middleware('auth');
+    Route::delete('/posts/{post}', 'destroy')->middleware('auth')->can('edit', 'review');
 });
 
 // *********** REVIEW ROUTES ***********

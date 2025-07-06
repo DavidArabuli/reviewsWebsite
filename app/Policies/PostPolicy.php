@@ -29,7 +29,7 @@ class PostPolicy
      */
     public function create(User $user): bool
     {
-        return $user->is_editor;
+        return $user->is_editor || $user->is_admin;
     }
 
     /**

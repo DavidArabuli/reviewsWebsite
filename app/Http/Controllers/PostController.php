@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -33,6 +34,7 @@ class PostController extends Controller
 
     public function store()
     {
+        // dd(request()->all());
         request()->validate([
             'title' => ['required', 'min:3', 'max:200'],
             'content' => ['required', 'string', 'max:5000'],
@@ -44,6 +46,7 @@ class PostController extends Controller
         $post = Post::create([
             'title' => request('title'),
             'content' => request('content'),
+            'slug' => Str::slug(request('title')),
 
             'user_id' => auth()->id(),
         ]);
@@ -63,7 +66,7 @@ class PostController extends Controller
 
 
 
-        return redirect('/posts');
+        return redirect('/');
     }
 
     public function edit(Post $post)
