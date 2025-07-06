@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\PostController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReviewController;
@@ -22,7 +23,21 @@ Route::get('test', function () {
     return 'done';
 });
 
-Route::view('/', 'welcome');
+// Route::view('/', '/home/welcome');
+
+// *********** POST ROUTES ***********
+// Route::view('/', '/home/welcome');
+
+
+Route::controller(PostController::class)->group(function () {
+    Route::get('/', 'index')->name('posts.index');
+    Route::get('/home/create', 'create')->name('posts.create')->middleware('auth');
+    Route::post('/home', 'store')->middleware('auth');
+    Route::get('/home/{post}', 'show')->name('posts.show');
+    Route::get('/home/{post}/edit', 'edit')->name('')->middleware('auth')->can('edit', 'review');
+    Route::patch('/home/{post}', 'update')->middleware('auth');
+    Route::delete('/home/{post}', 'destroy')->middleware('auth')->can('edit', 'review');
+});
 
 // *********** REVIEW ROUTES ***********
 

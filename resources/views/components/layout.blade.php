@@ -50,34 +50,18 @@
     });
 </script>
 
-  
-{{-- <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        new Swiper('.mySwiper', {
-            slidesPerView: 3,
-            spaceBetween: 16,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            loop: true,
-        });
-    });
-</script> --}}
-
-{{-- swiper end --}}
     <title>{{$heading}}</title>
 </head>
 <body class="body">
-    <nav class="nav m-2">
+    <nav class="nav ">
         <button
             id="menu-toggle"
-            class="md:hidden w-full px-4 py-2 bg-indigo-100 border border-indigo-700 outline outline-offset-1 p-2 ml-1  hover:bg-indigo-500 hover:text-white cursor-pointer rounded mx-auto">
+            class="md:hidden w-full px-4 py-2 bg-indigo-100 border border-indigo-700 outline outline-offset-1 p-2 mt-2 ml-1  hover:bg-indigo-500 hover:text-white cursor-pointer rounded mx-auto">
             toggle menu
         </button>
         
         
-        <div id="dropdown-menu" class="grid grid-cols-2 gap-2 md:flex md:flex-row md:space-x-4 md:space-y-0 mt-3">
+        <div id="dropdown-menu" class="grid grid-cols-2 gap-2 md:flex md:flex-row md:justify-center md:items-center md:space-x-4 md: bg-blue-100 md:space-y-0 mt-0">
 
             
             <x-nav-link class="text-red-600" href='/' :active="request()->is('/')">Home</x-nav-link>
