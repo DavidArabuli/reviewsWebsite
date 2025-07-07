@@ -34,7 +34,7 @@ Route::controller(PostController::class)->group(function () {
     Route::get('/posts/create', 'create')->name('posts.create')->middleware('auth')->can('create', App\Models\Post::class);
     Route::post('/posts', 'store')->middleware('auth');
     Route::get('/posts/{post}', 'show')->name('posts.show');
-    Route::get('/posts/{post}/edit', 'edit')->name('')->middleware('auth')->can('edit', 'review');
+    Route::get('/posts/{post}/edit', 'edit')->name('')->middleware('auth')->can('update', 'post');
     Route::patch('/posts/{post}', 'update')->middleware('auth');
     Route::delete('/posts/{post}', 'destroy')->middleware('auth')->can('edit', 'review');
 });

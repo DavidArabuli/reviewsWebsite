@@ -5,13 +5,13 @@
     </x-slot:heading>
     <x-page-header>News and Updates</x-page-header>
     @foreach ($posts as $item)
-    <x-blog-article>
-        <x-slot:content>
+    <x-post-preview href="/posts/{{$item->id}}">
+        
 
-            <p>{{$item->title}}</p>
-            <p>{{$item->content}}</p>
-        </x-slot:content>
-    </x-blog-article>
+            <div>{{$item->title}}</div>
+            
+        
+    </x-post-preview>
     @endforeach
 
     <div class="m-4">
