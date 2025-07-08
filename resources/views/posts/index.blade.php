@@ -4,12 +4,20 @@
         Home page  user!
     </x-slot:heading>
     <x-page-header>News and Updates</x-page-header>
-    @foreach ($posts as $item)
-    <x-post-preview href="/posts/{{$item->id}}">
+    @foreach ($posts as $post)
+    <x-post-preview href="/posts/{{$post->id}}">
         
 
-            <div>{{$item->title}}</div>
+            <div>{{$post->title}}</div>
             
+            @if ($post->screenshots && count($post->screenshots) > 0)
+        
+            @foreach ($post->screenshots as $screenshot)
+                <x-gameImg src="{{ asset('storage/' . $screenshot) }}" alt="Screenshot"></x-gameImg>
+            @endforeach
+            @else
+            <p>No screenshots available.</p>
+            @endif
         
     </x-post-preview>
     @endforeach

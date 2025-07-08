@@ -36,7 +36,7 @@ Route::controller(PostController::class)->group(function () {
     Route::get('/posts/{post}', 'show')->name('posts.show');
     Route::get('/posts/{post}/edit', 'edit')->name('')->middleware('auth')->can('update', 'post');
     Route::patch('/posts/{post}', 'update')->middleware('auth');
-    Route::delete('/posts/{post}', 'destroy')->middleware('auth')->can('edit', 'review');
+    Route::delete('/posts/{post}', 'destroy')->middleware('auth')->can('delete', 'post');
 });
 
 // *********** REVIEW ROUTES ***********

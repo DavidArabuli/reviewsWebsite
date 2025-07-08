@@ -1,3 +1,4 @@
+{{-- {{dd($post->screenshots)}} --}}
 <x-layout>
     <x-slot:heading>
         Single post page
@@ -14,9 +15,9 @@
     </x-slot:content>
 
     
-
     <x-slot:screenshots>
-            @if ($post->screenshots && count($post->screenshots) > 0)
+        @if ($post->screenshots && count($post->screenshots) > 0)
+        
             @foreach ($post->screenshots as $screenshot)
                 <x-gameImg src="{{ asset('storage/' . $screenshot) }}" alt="Screenshot"></x-gameImg>
             @endforeach

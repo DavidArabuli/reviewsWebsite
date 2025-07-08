@@ -1,3 +1,5 @@
+{{-- {{dd($review->screenshots)}} --}}
+
 <x-layout>
     <x-slot:heading>
         Single review page
