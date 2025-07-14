@@ -66,7 +66,7 @@
             
             <x-nav-link class="text-red-600" href='/' :active="request()->is('/')">Home</x-nav-link>
             <x-nav-link href='/reviews' :active="request()->is('reviews')">reviews</x-nav-link>
-            <x-nav-link href='/contact' :active="request()->is('contact')">contact</x-nav-link>
+            <x-nav-link href='/contacts' :active="request()->is('contacts')">contact</x-nav-link>
             <x-nav-link href='/games' :active="request()->is('games')">all games</x-nav-link>
             <x-nav-link href='/tags' :active="request()->is('tags')">all tags</x-nav-link>
             

@@ -6,31 +6,35 @@ use App\Models\Post;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class ContactsController extends Controller
 {
     public function index()
     {
-        $query = Post::with('user')->where('type', 'blog');
+
         // $query = Post::with(['user']);
 
 
-        $posts = $query->paginate(10);
+        // $contacts = $query->paginate(10);
+        // $post = Post::with('user')->where('type', 'contacts')->firstOrFail();
+        $post = Post::with('user')->where('type', 'contacts')->first();
 
-        return view('posts.index', compact('posts'));
+
+        // return view('contacts.index');
+        return view('contacts.index', ['post' => $post]);
     }
     public function create(Request $request)
     {
 
         // dd($request);
-        return view('posts.create');
+        return view('contacts.create');
     }
 
-    public function show(Post $post)
-    {
+    // public function show(Post $post)
+    // {
 
-        $user = $post->user;
-        return view('posts.show', ['post' => $post]);
-    }
+    //     $user = $post->user;
+    //     return view('contacts.show', ['post' => $post]);
+    // }
 
     public function store()
     {
@@ -47,6 +51,7 @@ class PostController extends Controller
             'title' => request('title'),
             'content' => request('content'),
             'slug' => Str::slug(request('title')),
+            'type' => 'contacts',
 
             'user_id' => auth()->id(),
         ]);
@@ -71,7 +76,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        return view('posts.edit', ['post' => $post]);
+        return view('contacts.edit', ['post' => $post]);
     }
 
     public function update(Post $post)
@@ -96,7 +101,7 @@ class PostController extends Controller
 
         ]);
 
-        return redirect('/posts/' . $post->id);
+        return redirect('/contacts/' . $post->id);
     }
 
     public function destroy(Post $post)

@@ -1,9 +1,9 @@
 <x-layout>
     <x-slot:heading>
-        Create review
+        Create contacts
     </x-slot:heading>
-    <h1>Create a new review</h1>
-    <form class="m-5" method="POST" action="/posts" enctype="multipart/form-data">
+    <h1>Create a new contact post</h1>
+    <form class="m-5" method="POST" action="/contacts" enctype="multipart/form-data">
         @csrf
         <x-form-field>
             <div>
@@ -19,7 +19,7 @@
                 
                 {{-- editor --}}
                 <input id="content" type="hidden" name="content" value="{{ old('content') }}">
-                
+                <input id="type" type="hidden" name="type" value="contacts">
                 <div class="min-h-[30rem] overflow-auto border rounded-md">
                     <trix-editor input="content" class="w-full h-full"></trix-editor>
                 </div>

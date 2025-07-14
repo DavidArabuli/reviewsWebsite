@@ -14,6 +14,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\UserManagementController;
 
@@ -37,6 +38,18 @@ Route::controller(PostController::class)->group(function () {
     Route::get('/posts/{post}/edit', 'edit')->name('')->middleware('auth')->can('update', 'post');
     Route::patch('/posts/{post}', 'update')->middleware('auth');
     Route::delete('/posts/{post}', 'destroy')->middleware('auth')->can('delete', 'post');
+});
+
+// *********** CONTACTS ROUTES ***********
+
+Route::controller(ContactsController::class)->group(function () {
+    Route::get('/contacts', 'index')->name('contacts.index');
+    Route::get('/contacts/create', 'create')->name('contacts.create')->middleware('auth')->can('create', App\Models\Post::class);
+    Route::post('/contacts', 'store')->middleware('auth');
+    // Route::get('/contacts/{post}', 'show')->name('contacts.show');
+    Route::get('/contacts/edit', 'edit')->name('')->middleware('auth')->can('update', 'post');
+    Route::patch('/contacts', 'update')->middleware('auth');
+    Route::delete('/contacts', 'destroy')->middleware('auth')->can('delete', 'post');
 });
 
 // *********** REVIEW ROUTES ***********
