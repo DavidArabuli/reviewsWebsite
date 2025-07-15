@@ -29,12 +29,12 @@ class ContactsController extends Controller
         return view('contacts.create');
     }
 
-    // public function show(Post $post)
-    // {
+    public function show(Post $post)
+    {
 
-    //     $user = $post->user;
-    //     return view('contacts.show', ['post' => $post]);
-    // }
+        $user = $post->user;
+        return view('contacts.show', ['post' => $post]);
+    }
 
     public function store()
     {

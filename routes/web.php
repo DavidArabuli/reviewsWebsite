@@ -46,7 +46,7 @@ Route::controller(ContactsController::class)->group(function () {
     Route::get('/contacts', 'index')->name('contacts.index');
     Route::get('/contacts/create', 'create')->name('contacts.create')->middleware('auth')->can('create', App\Models\Post::class);
     Route::post('/contacts', 'store')->middleware('auth');
-    // Route::get('/contacts/{post}', 'show')->name('contacts.show');
+    Route::get('/contacts/{post}', 'show')->name('contacts.show');
     Route::get('/contacts/edit', 'edit')->name('')->middleware('auth')->can('update', 'post');
     Route::patch('/contacts', 'update')->middleware('auth');
     Route::delete('/contacts', 'destroy')->middleware('auth')->can('delete', 'post');
