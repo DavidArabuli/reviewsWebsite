@@ -22,8 +22,13 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'email', 'max:254'],
             'password' => ['required', Password::min(5), 'confirmed'],
 
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048'
+
         ]);
         // create
+        if (request()->hasFile('avatar')) {
+            $attributes['avatar'] = request()->file('avatar')->store('avatars', 'public');
+        }
         $user = User::create($attributes);
         // login
         Auth::login($user);

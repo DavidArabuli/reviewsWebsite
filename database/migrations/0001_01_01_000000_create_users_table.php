@@ -20,6 +20,7 @@ return new class extends Migration
             $table->boolean('is_author')->default(true);
             $table->boolean('is_editor')->default(false);
             $table->boolean('is_admin')->default(false);
+            $table->string('avatar')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
