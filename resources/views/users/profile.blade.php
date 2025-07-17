@@ -3,7 +3,12 @@
         Profile page
     </x-slot:heading>
     <x-sub-header>All reviews from this author:</x-sub-header>
-    <x-avatar src="{{ asset('storage/' . $user->avatar) }}"></x-avatar>
+    
+    <x-avatar src="{{ $user->avatar 
+        ? asset('storage/' . $user->avatar) 
+        : asset('storage/avatars/avatar.png') }}">></x-avatar>
+    
+
     <div class="ml-3">
 
         @foreach ($reviews as $item)

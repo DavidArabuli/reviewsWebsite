@@ -65,12 +65,27 @@
                 <x-form-error name='avatar'/>
             </div>
         </x-form-field>
+        <!-- Avatar Preview + Cropping -->
+<div class="mt-4">
+    <div class="w-64 h-64 border relative">
+        <img id="avatar-preview" class="w-full h-full object-contain" alt="Preview">
+    </div>
+</div>
+
+<input type="hidden" name="cropped_avatar" id="cropped-avatar-input">
         
+
+            <x-form-button >Register</x-form-button>
+            <a href="/" >Cancel</a>
+        </form>
+    </article>
+
+       
         <script>
             function handleAvatarChange(input) {
                 const fileList = input.files;
                 const maxFiles = 1;
-                const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+                const maxSize = 2 * 1024 * 1024; 
                 const output = document.getElementById('file-chosen');
         
                 if (fileList.length > maxFiles) {
@@ -99,12 +114,69 @@
                 output.textContent = Array.from(fileList).map(f => f.name).join(', ');
             }
         </script>
+        
+        <script>
+let cropper;
+const avatarInput = document.getElementById('avatar');
+const avatarPreview = document.getElementById('avatar-preview');
+const croppedInput = document.getElementById('cropped-avatar-input');
 
-            <x-form-button >Register</x-form-button>
-            <a href="/" >Cancel</a>
-        </form>
-    </article>
+avatarInput.addEventListener('change', function (e) {
+    const file = e.target.files[0];
+    if (!file) return;
 
-       
-    
+    const reader = new FileReader();
+    reader.onload = function (event) {
+        avatarPreview.src = event.target.result;
+
+        if (cropper) cropper.destroy();
+
+        cropper = new Cropper(avatarPreview, {
+            aspectRatio: 1, // 1:1 for circle
+            viewMode: 1,
+            autoCropArea: 1,
+            cropBoxResizable: true,
+            cropBoxMovable: true,
+        });
+    };
+    reader.readAsDataURL(file);
+});
+
+
+document.querySelector('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    if (!cropper) {
+        this.submit(); 
+        return;
+    }
+
+    cropper.getCroppedCanvas({
+        width: 300,
+        height: 300
+    }).toBlob(function (blob) {
+        const formData = new FormData(e.target);
+
+        // remove original and replace with cropped version
+        formData.delete('avatar'); 
+
+        formData.append('avatar', blob, 'cropped-avatar.jpg'); 
+
+        fetch(e.target.action, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            },
+            body: formData
+        }).then(response => {
+            if (response.redirected) {
+                window.location.href = response.url;
+            } else {
+                return response.text().then(console.log);
+            }
+        });
+    });
+});
+</script>
+
 </x-layout>

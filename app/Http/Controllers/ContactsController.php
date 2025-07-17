@@ -60,10 +60,10 @@ class ContactsController extends Controller
 
             foreach (request()->file('screenshots') as $screenshot) {
                 $path = $screenshot->store('screenshots', 'public');
-                $screenshotsPaths[] = $path;  // Collect all the paths
+                $screenshotsPaths[] = $path;
             }
 
-            // Save the collected file paths to the post
+
             $post->update([
                 'screenshots' => $screenshotsPaths
             ]);

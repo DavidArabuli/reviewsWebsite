@@ -7,11 +7,14 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     {{-- <link rel="stylesheet" href="{{ asset('app.css') }}"> --}}
-    
+    {{-- cropper --}}
+    <link  href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.js"></script>
+    {{-- end of cropper --}}
     {{-- editor --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js"></script>
-    {{-- editor end --}}
+    {{-- end of editor --}}
     {{-- swiper --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
