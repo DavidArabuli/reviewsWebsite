@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -17,10 +18,13 @@ class ContactsController extends Controller
         // $contacts = $query->paginate(10);
         // $post = Post::with('user')->where('type', 'contacts')->firstOrFail();
         $post = Post::with('user')->where('type', 'contacts')->first();
+        $team = User::where('is_admin', 1)
+            ->orWhere('is_editor', 1)
+            ->get();
 
 
         // return view('contacts.index');
-        return view('contacts.index', ['post' => $post]);
+        return view('contacts.index', ['post' => $post, 'team' => $team]);
     }
     public function create(Request $request)
     {
