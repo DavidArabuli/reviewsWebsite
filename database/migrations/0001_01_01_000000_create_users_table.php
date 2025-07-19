@@ -20,13 +20,13 @@ return new class extends Migration
             $table->boolean('is_author')->default(true);
             $table->boolean('is_editor')->default(false);
             $table->boolean('is_admin')->default(false);
-            $table->string('avatar')->nullable();
+            $table->text('avatar')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
 
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });

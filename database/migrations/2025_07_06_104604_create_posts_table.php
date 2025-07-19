@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('title');
             $table->json('screenshots')->nullable();
             $table->text('content');
-            $table->string('type')->default('blog');
+            // $table->string('type')->default('blog');
+            $table->enum('type', ['blog', 'contacts'])->default('blog');
             $table->string('slug')->unique();
             $table->timestamps();
         });

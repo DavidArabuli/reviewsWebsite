@@ -16,13 +16,14 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
-            $table->foreignId('game_id')->nullable()->constrained()->nullOnDelete();
+            // $table->foreignId('game_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignIdFor(Game::class)->nullable()->constrained()->nullOnDelete();
             $table->json('screenshots')->nullable();
 
             $table->string('title');
             $table->text('content');
-            $table->integer('score');
-            $table->integer('steam_id')->nullable();
+            $table->unsignedTinyInteger('score');
+            $table->unsignedBigInteger('steam_id')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('review');
+        Schema::dropIfExists('reviews');
     }
 };

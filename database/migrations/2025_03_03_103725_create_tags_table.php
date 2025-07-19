@@ -20,16 +20,20 @@ return new class extends Migration
             $table->timestamps();
         });
         Schema::create('review_tag', function (Blueprint $table) {
-            $table->id();
+            // $table->id();
             $table->foreignIdFor(Review::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Tag::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
+
+            $table->unique(['review_id', 'tag_id']);
         });
         Schema::create('game_tag', function (Blueprint $table) {
-            $table->id();
+            // $table->id();
             $table->foreignIdFor(Game::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Tag::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
+
+            $table->unique(['game_id', 'tag_id']);
         });
     }
 

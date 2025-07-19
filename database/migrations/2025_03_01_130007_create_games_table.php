@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->integer('steam_id');
+            $table->unsignedBigInteger('steam_id')->unique();
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->string('steam_review_score');
             $table->string('image_path')->nullable();
             $table->softDeletes();
