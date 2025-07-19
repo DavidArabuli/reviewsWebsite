@@ -16,6 +16,10 @@
         </div>
         </x-link>
         @endforeach
+
+        <div class="mt-2">
+        {{ $users->appends(request()->query())->links('components.pagination') }}
+    </div>
     
     
     

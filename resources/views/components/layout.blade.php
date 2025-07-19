@@ -68,20 +68,20 @@
 
             
             <x-nav-link class="text-red-600" href='/' :active="request()->is('/')">Home</x-nav-link>
-            <x-nav-link href='/reviews' :active="request()->is('reviews')">reviews</x-nav-link>
-            <x-nav-link href='/contacts' :active="request()->is('contacts')">contact</x-nav-link>
-            <x-nav-link href='/games' :active="request()->is('games')">all games</x-nav-link>
-            <x-nav-link href='/tags' :active="request()->is('tags')">all tags</x-nav-link>
+            <x-nav-link href='/reviews' :active="request()->is('reviews')">Reviews</x-nav-link>
+            <x-nav-link href='/contacts' :active="request()->is('contacts')">Contacts</x-nav-link>
+            <x-nav-link href='/games' :active="request()->is('games')">All games</x-nav-link>
+            <x-nav-link href='/tags' :active="request()->is('tags')">All tags</x-nav-link>
             
             @guest 
-            <x-nav-link href='/login' :active="request()->is('login')">login</x-nav-link>
-            <x-nav-link href='/register' :active="request()->is('register')">register</x-nav-link>
+            <x-nav-link href='/login' :active="request()->is('login')">Login</x-nav-link>
+            <x-nav-link href='/register' :active="request()->is('register')">Register</x-nav-link>
             @endguest
             
             @auth 
             
             
-            <x-nav-link href="{{route('profile.show', auth()->user())}}">profile</x-nav-link>
+            <x-nav-link href="{{route('profile.show', auth()->user())}}">Profile</x-nav-link>
             @if(auth()->user()->is_admin)
             
             <x-nav-link href="/admin">Admin dashboard</x-nav-link>
