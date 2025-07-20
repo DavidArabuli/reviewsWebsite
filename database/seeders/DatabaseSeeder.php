@@ -3,20 +3,17 @@
 namespace Database\Seeders;
 
 use App\Models\Tag;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Game;
 use App\Models\User;
 use App\Models\Review;
+use App\Services\SteamService;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
+
     public function run(): void
     {
-        // User::factory(10)->create();
         Tag::factory(5)->create();
 
         User::factory()->create([
@@ -24,10 +21,24 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        $games = Game::factory(10)->create();
+
+        $steamIDs = [451020, 890720, 564530, 2161700, 553850, 2277560];
 
 
-        Review::factory(30)->create([
+        $games = collect();
+
+        foreach ($steamIDs as $steamID) {
+            $steamService = new SteamService($steamID);
+
+            $game = Game::factory()->create([
+                'steam_id' => $steamID,
+                'image_path' => $steamService->getLocalImgPath(),
+            ]);
+
+            $games->push($game);
+        }
+
+        Review::factory(6)->create([
             'game_id' => fn() => $games->random()->id,
         ]);
     }

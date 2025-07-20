@@ -19,25 +19,22 @@ class GameFactory extends Factory
      */
     public function definition(): array
     {
-        $steamID = fake()->randomElement([451020, 890720, 564530]); // 
-        $steamService = new SteamService($steamID);
         return [
-            'steam_id' => $steamID,
+            'steam_id' => null,
             'title' => fake()->word(),
-            'image_path' => $steamService->getLocalImgPath(),
+            'image_path' => null,
             'steam_review_score' => fake()->randomElement([
                 'mostly_positive',
                 'very_positive',
                 'mostly_negative'
             ]),
             'description' => fake()->sentence(100),
-
         ];
     }
     public function configure()
     {
         return $this->afterCreating(function (Game $game) {
-            // Attach random tags (1 to 3 tags per review)
+
             $tagIds = Tag::inRandomOrder()->limit(rand(1, 5))->pluck('id');
             $game->tags()->attach($tagIds);
         });
