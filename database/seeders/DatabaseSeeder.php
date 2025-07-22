@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
+
         Tag::factory(5)->create();
 
         User::factory()->create([
@@ -21,7 +22,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-
+        $this->call(AdminUserSeeder::class);
         $steamIDs = [451020, 890720, 564530, 2161700, 553850, 2277560];
 
 
