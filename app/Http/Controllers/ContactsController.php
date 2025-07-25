@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Str;
@@ -75,7 +76,7 @@ class ContactsController extends Controller
 
 
 
-        return redirect('/');
+        return redirect('/contacts');
     }
 
     public function edit(Post $post)
@@ -116,7 +117,7 @@ class ContactsController extends Controller
         // $post = post::findOrFail($id);
         $post->delete();
 
-        return redirect('/');
+        return redirect('/contacts');
         // redirect
     }
 }
