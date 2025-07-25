@@ -49,7 +49,7 @@ Route::controller(ContactsController::class)->group(function () {
     Route::get('/contacts/{post}', 'show')->name('contacts.show');
     Route::get('/contacts/{post}/edit', 'edit')->name('contacts.edit')->middleware('auth')->can('update', 'post');
     Route::patch('/contacts', 'update')->middleware('auth');
-    Route::delete('/contacts', 'destroy')->middleware('auth')->can('delete', 'post');
+    Route::delete('/contacts/{post}', 'destroy')->middleware('auth')->can('delete', 'post');
 });
 
 // *********** REVIEW ROUTES ***********

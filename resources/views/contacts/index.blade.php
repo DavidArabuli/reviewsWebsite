@@ -39,12 +39,7 @@
         @endif
         @endcan
     </div>
-    <div class="m-4">
-    
-        @can('update', App\Model\Post::class)
-        <x-button href="{{ route('contacts.edit', $post) }}">Edit a post</x-button>
-        @endcan
-    </div>
+
     <x-page-header>Our team</x-page-header>
     <div>
         @foreach($team as $member)

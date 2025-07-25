@@ -29,7 +29,7 @@
     
         <x-slot:functional>
         @can('update', $post)
-        <x-button href='/posts/{{$post->id}}/edit'>Edit post</x-button>
+        <x-button href='/contacts/{{$post->id}}/edit'>Edit post</x-button>
         @endcan
         </x-slot:functional>
     </x-post-article>
