@@ -55,10 +55,10 @@ class PostController extends Controller
 
             foreach (request()->file('screenshots') as $screenshot) {
                 $path = $screenshot->store('screenshots', 'public');
-                $screenshotsPaths[] = $path;  // Collect all the paths
+                $screenshotsPaths[] = $path;
             }
 
-            // Save the collected file paths to the post
+
             $post->update([
                 'screenshots' => $screenshotsPaths
             ]);
@@ -81,6 +81,8 @@ class PostController extends Controller
         request()->validate([
             'title' => ['required', 'min:3', 'max:200'],
             'content' => ['required', 'string', 'max:5000'],
+            'screenshots' => 'array|max:5',
+            'screenshots.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048'
 
         ]);
         // update and persist
@@ -95,6 +97,20 @@ class PostController extends Controller
             'content' => request('content'),
 
         ]);
+        if (request()->hasFile('screenshots')) {
+            $screenshotsPaths = [];
+
+            foreach (request()->file('screenshots') as $screenshot) {
+                $path = $screenshot->store('screenshots', 'public');
+                $screenshotsPaths[] = $path;
+            }
+
+
+            $post->update([
+                'screenshots' => $screenshotsPaths
+            ]);
+        }
+
 
         return redirect('/posts/' . $post->id);
     }
