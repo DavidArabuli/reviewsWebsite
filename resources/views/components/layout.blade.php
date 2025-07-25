@@ -87,7 +87,7 @@
             <x-nav-link href="/admin">Admin dashboard</x-nav-link>
             
             @endif
-            <form action="/logout" method="POST" >
+            <form id="logoutForm" action="/logout" method="POST" >
                 @csrf
                 <x-form-button>Logout</x-form-button>
             </form>

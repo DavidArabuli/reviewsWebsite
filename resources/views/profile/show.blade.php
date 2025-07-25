@@ -9,6 +9,12 @@
             ? asset('storage/' . $user->avatar) 
             : asset('storage/avatars/avatar.png') }}">></x-avatar>
         
+        @auth 
+            
+            
+            <x-nav-link href="{{route('profile.edit', auth()->user())}}">edit avatar</x-nav-link>
+            
+            @endauth
     
         <div class="ml-3">
     

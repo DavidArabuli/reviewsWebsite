@@ -137,6 +137,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 Route::prefix('users')->group(function () {
 
     Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile/{user}', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 // Route::middleware('auth')->group(function () {
 
@@ -149,10 +152,10 @@ Route::prefix('users')->group(function () {
 
 
 
-Route::get('/register', [RegisteredUserController::class, 'create']);
+Route::get('/register', [RegisteredUserController::class, 'create'])->middleware('guest');
 
-Route::post('/register', [RegisteredUserController::class, 'store']);
+Route::post('/register', [RegisteredUserController::class, 'store'])->middleware('guest');
 
-Route::get('/login', [SessionController::class, 'create'])->name('login');
-Route::post('/login', [SessionController::class, 'store']);
+Route::get('/login', [SessionController::class, 'create'])->name('login')->middleware('guest');
+Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
 Route::post('/logout', [SessionController::class, 'destroy']);
