@@ -9,12 +9,18 @@
             ? asset('storage/' . $user->avatar) 
             : asset('storage/avatars/avatar.png') }}">></x-avatar>
         
-        @auth 
-            
-            
-            <x-nav-link href="{{route('profile.edit', auth()->user())}}">edit avatar</x-nav-link>
-            
-            @endauth
+        @if(auth()->id() === $user->id)
+        <form method="POST" action="{{ route('profile.destroy', $user) }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">
+                Delete My Account
+            </button>
+        </form>
+        <x-nav-link href="{{route('profile.edit', auth()->user())}}">edit avatar</x-nav-link>
+        
+        @endif
+        
     
         <div class="ml-3">
     

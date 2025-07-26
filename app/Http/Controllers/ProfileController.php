@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
+    use AuthorizesRequests;
     public function show(User $user)
     {
         $reviews = $user->reviews;
@@ -51,15 +54,24 @@ class ProfileController extends Controller
         return redirect()->route('profile.show', $user)
             ->with('success', 'Avatar updated!');
     }
-
     public function destroy(User $user)
     {
+        $this->authorize('delete', $user);
 
-        return view(
-            'admin.users.user',
-            [
-                'user' => $user
-            ]
-        );
+        Auth::logout();
+
+        $user->delete();
+
+        return redirect('/')->with('success', 'Your account has been deleted.');
     }
+    // public function destroy(User $user)
+    // {
+
+    //     return view(
+    //         'admin.users.user',
+    //         [
+    //             'user' => $user
+    //         ]
+    //     );
+    // }
 }
