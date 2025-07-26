@@ -48,7 +48,8 @@ Route::controller(ContactsController::class)->group(function () {
     Route::post('/contacts', 'store')->middleware('auth');
     Route::get('/contacts/{post}', 'show')->name('contacts.show');
     Route::get('/contacts/{post}/edit', 'edit')->name('contacts.edit')->middleware('auth')->can('update', 'post');
-    Route::patch('/contacts', 'update')->middleware('auth');
+    // Route::patch('/contacts', 'update')->middleware('auth');
+    Route::patch('/contacts/{post}', 'update')->middleware('auth')->can('update', 'post');
     Route::delete('/contacts/{post}', 'destroy')->middleware('auth')->can('delete', 'post');
 });
 
@@ -108,8 +109,7 @@ Route::controller(GameController::class)->group(function () {
     Route::get('/games/{game}', 'show')->name('games.show');
 
     Route::get('/games/{game}/edit', 'edit')
-        ->middleware('auth');
-    // ->can('edit', 'game');
+        ->middleware('auth')->can('edit', 'game');
 
     Route::patch('/games/{game}', 'update')->middleware('auth')->can('edit', 'game');
 
@@ -137,9 +137,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 Route::prefix('users')->group(function () {
 
     Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
-    Route::get('/profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile/{user}', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth')->can('update', 'user');
+    Route::patch('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth')->can('update', 'user');
+    Route::delete('/profile/{user}', [ProfileController::class, 'destroy'])->name('profile.destroy')->middleware('auth')->can('delete', 'user');;
 });
 // Route::middleware('auth')->group(function () {
 
