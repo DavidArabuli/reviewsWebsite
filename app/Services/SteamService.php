@@ -21,9 +21,7 @@ class SteamService
     {
         $this->steam_id = $ID;
         $this->set_image_url($this->steam_id);
-        // $this->set_review_url($ID);
         $this->setImageJson($this->urlImage);
-        // $this->setReviewJson($this->urlReview);
         $this->downloadImage();
         $this->getReviewScore();
         $this->getShortDescription();
@@ -71,45 +69,18 @@ class SteamService
     {
         $url = "https://store.steampowered.com/appreviews/{$this->steam_id}?json=1";
         $response  = Http::withoutVerifying()->get($url)->json();
-        // dd($response['query_summary']['review_score_desc']);
         $this->reviewScore = $response['query_summary']['review_score_desc'];
     }
     public function getShortDescription()
     {
         $url = "https://store.steampowered.com/api/appdetails?appids={$this->steam_id}";
         $response  = Http::withoutVerifying()->get($url)->json();
-        // dd($response['query_summary']['review_score_desc']);
         $this->description = $response[$this->steam_id]['data']['short_description'];
     }
     public function getScreenshotsURLArray()
     {
         $url = "https://store.steampowered.com/api/appdetails?appids={$this->steam_id}";
         $response  = Http::withoutVerifying()->get($url)->json();
-        // dd($response['query_summary']['review_score_desc']);
         $this->screenshotsArray = $response[$this->steam_id]['data']['screenshots'];
     }
-
-
-    // private function set_review_url($ID)
-    // {
-    //     $this->urlReview = "https://store.steampowered.com/appreviews/{$ID}?json=1";
-    // }
-
-    // public function get_review_url()
-    // {
-    //     echo $this->urlReview;
-    // }
-
-    // public function get_image()
-    // {
-    //     echo $this->urlImage;
-    // }
-
-
-    // private function setReviewJson($urlReview)
-    // {
-    //     $dataReview = Http::get($urlReview)->json();
-    //     $this->reviewScore =
-    //         $dataReview['query_summary']['review_score_desc'];
-    // }
 };

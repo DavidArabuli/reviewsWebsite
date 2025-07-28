@@ -39,7 +39,7 @@ class UserManagementController extends Controller
         );
     }
     public function update(User $user)
-    { // validate
+    {
         request()->validate([
             'role' => ['required'],
         ]);

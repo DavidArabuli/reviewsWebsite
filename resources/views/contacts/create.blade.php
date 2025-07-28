@@ -71,7 +71,7 @@
             function handleScreenshotsChange(input) {
                 const fileList = input.files;
                 const maxFiles = 5;
-                const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+                const maxSize = 2 * 1024 * 1024; // 2MB 
                 const output = document.getElementById('file-chosen');
         
                 if (fileList.length > maxFiles) {
@@ -119,6 +119,4 @@
         <x-form-button >Save</x-form-button>
     </form>
 
-       
-    
 </x-layout>

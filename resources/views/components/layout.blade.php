@@ -93,15 +93,9 @@
             </form>
             @endauth
         </div>
-        
-        
     </nav>
     <div class="m-2">
       {{$slot}}
-
     </div>
-    <br>
-
-
 </body>
 </html>

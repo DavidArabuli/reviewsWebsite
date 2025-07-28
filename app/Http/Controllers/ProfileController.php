@@ -19,7 +19,7 @@ class ProfileController extends Controller
     public function edit(User $user)
     {
 
-        // return dd('from edit');
+
         return view(
             'profile.edit',
             [
@@ -64,14 +64,4 @@ class ProfileController extends Controller
 
         return redirect('/')->with('success', 'Your account has been deleted.');
     }
-    // public function destroy(User $user)
-    // {
-
-    //     return view(
-    //         'admin.users.user',
-    //         [
-    //             'user' => $user
-    //         ]
-    //     );
-    // }
 }

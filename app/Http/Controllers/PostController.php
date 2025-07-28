@@ -11,7 +11,7 @@ class PostController extends Controller
     public function index()
     {
         $query = Post::with('user')->where('type', 'blog');
-        // $query = Post::with(['user']);
+
 
 
         $posts = $query->paginate(10);
@@ -21,7 +21,7 @@ class PostController extends Controller
     public function create(Request $request)
     {
 
-        // dd($request);
+
         return view('posts.create');
     }
 
@@ -34,7 +34,7 @@ class PostController extends Controller
 
     public function store()
     {
-        // dd(request()->all());
+
         request()->validate([
             'title' => ['required', 'min:3', 'max:200'],
             'content' => ['required', 'string', 'max:5000'],
@@ -76,8 +76,7 @@ class PostController extends Controller
 
     public function update(Post $post)
     {
-        // authorize...
-        // validation
+
         request()->validate([
             'title' => ['required', 'min:3', 'max:200'],
             'content' => ['required', 'string', 'max:5000'],
@@ -85,12 +84,6 @@ class PostController extends Controller
             'screenshots.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048'
 
         ]);
-        // update and persist
-        // $post = post::findOrFail($id);
-
-        // $post->title = request('title');
-        // $post->content = request('content');
-        // $post->save();
 
         $post->update([
             'title' => request('title'),
@@ -117,13 +110,9 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        // authorize
-        // delete
-        // post::findOrFail($id)->delete(); --same as below
-        // $post = post::findOrFail($id);
+
         $post->delete();
 
         return redirect('/');
-        // redirect
     }
 }

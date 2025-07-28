@@ -10,24 +10,22 @@ class TagController extends Controller
     public function index()
     {
         $tag = new Tag();
-        // dd('hey from all tags');
+
         return view('tags.index', ['tags' => Tag::all(), 'tag' => $tag]);
     }
     public function show($id)
     {
-        // dd('hey from all tags');
+
         return view('tags.show', ['tag' => Tag::findOrFail($id)]);
     }
     public function create()
     {
-        // dd('hey from create tags');
+
         return view('tags.create');
     }
     public function store()
     {
-        // $tagName = trim(strtolower(request('tag')));
 
-        // request()->merge(['tag' => $tagName]);
 
         request()->validate([
             'tag' => ['required', 'unique:tags,name', 'max:50']
@@ -36,7 +34,7 @@ class TagController extends Controller
             'name' => request('tag'),
 
         ]);
-        // dd('hey from store tags');
+
         return redirect()->route('tags.index')->with('success', 'Tag created successfully!');
     }
     public function edit(Tag $tag)
@@ -59,13 +57,9 @@ class TagController extends Controller
     }
     public function destroy(tag $tag)
     {
-        // authorize
-        // delete
-        // tag::findOrFail($id)->delete(); --same as below
-        // $tag = tag::findOrFail($id);
+
         $tag->delete();
 
         return redirect('/tags');
-        // redirect
     }
 }

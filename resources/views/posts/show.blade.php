@@ -1,4 +1,3 @@
-{{-- {{dd($post->screenshots)}} --}}
 <x-layout>
     <x-slot:heading>
         Single post page

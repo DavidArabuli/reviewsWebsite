@@ -85,7 +85,7 @@
             function handleScreenshotsChange(input) {
                 const fileList = input.files;
                 const maxFiles = 5;
-                const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+                const maxSize = 2 * 1024 * 1024;
                 const output = document.getElementById('file-chosen');
         
                 if (fileList.length > maxFiles) {
@@ -133,7 +133,4 @@
         <input type="hidden" name="steam_id" value="{{ $steam_id }}">
         <x-form-button >Save</x-form-button>
     </form>
-
-       
-    
 </x-layout>

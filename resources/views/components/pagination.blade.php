@@ -1,7 +1,7 @@
 @if ($paginator->hasPages())
     <nav role="navigation" aria-label="Pagination Navigation" class="flex justify-center mt-6">
 
-        {{-- Full Pagination (visible on medium and larger screens) --}}
+        {{-- Full Pagination (medium and larger screens) --}}
         <ul class="hidden md:inline-flex items-center space-x-1">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
@@ -38,7 +38,7 @@
                         @else
                             <li>
                                 <a href="{{ $url }}"
-                                   class="px-3 py-1 text-blue-600 bg-white border border-blue-300 rounded-md hover:bg-blue-100">
+                                class="px-3 py-1 text-blue-600 bg-white border border-blue-300 rounded-md hover:bg-blue-100">
                                     {{ $page }}
                                 </a>
                             </li>
@@ -51,7 +51,7 @@
             @if ($paginator->hasMorePages())
                 <li>
                     <a href="{{ $paginator->nextPageUrl() }}"
-                       class="px-3 py-1 text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-100">
+                    class="px-3 py-1 text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-100">
                         &raquo;
                     </a>
                 </li>
@@ -64,7 +64,7 @@
             @endif
         </ul>
 
-        {{-- Mobile Pagination (visible on small screens only) --}}
+        {{-- Mobile Pagination  --}}
         <ul class="flex md:hidden items-center space-x-4">
             {{-- Previous --}}
             @if ($paginator->onFirstPage())
@@ -76,7 +76,7 @@
             @else
                 <li>
                     <a href="{{ $paginator->previousPageUrl() }}"
-                       class="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-100">
+                    class="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-100">
                         Previous
                     </a>
                 </li>
@@ -86,7 +86,7 @@
             @if ($paginator->hasMorePages())
                 <li>
                     <a href="{{ $paginator->nextPageUrl() }}"
-                       class="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-100">
+                    class="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-100">
                         Next
                     </a>
                 </li>

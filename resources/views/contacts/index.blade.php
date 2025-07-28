@@ -1,11 +1,9 @@
 <x-layout >
 
     <x-slot:heading>
-        Home page  user!
+        Home page user!
     </x-slot:heading>
     <x-page-header>Contacts and team</x-page-header>
-    {{-- @foreach ($posts as $post) --}}
-    {{-- * there will be only one contact post atm --}}
     @if($post)
     <a class="cursor-pointer" href="{{ route('contacts.show', $post) }}">
     <x-post-article>
@@ -29,7 +27,6 @@
             </x-post-article>
         </a>
     @endif
-    {{-- @endforeach --}}
 
     <div class="m-4">
     

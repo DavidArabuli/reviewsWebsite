@@ -2,7 +2,6 @@
     <x-slot:heading>
         Single USER page
     </x-slot:heading>
-    <h1>hello from single USER page</h1>
     <br>
     this user`s id is {{$user->id}}
     <br>

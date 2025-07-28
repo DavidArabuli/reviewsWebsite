@@ -140,7 +140,6 @@ form.addEventListener('submit', function (e) {
 });
 
 function submitForm(formData) {
-    // Debug: log form data
     for (const [key, value] of formData.entries()) {
         console.log(`${key}:`, value);
     }
@@ -164,7 +163,7 @@ function submitForm(formData) {
     } else {
         console.log("Success:", data);
         alert(data.message);
-       
+
         window.location.href = data.redirect_url;
     }
 }).catch(error => {
@@ -180,7 +179,4 @@ function showValidationErrors(errors) {
     }
 }
 </script>
-
-
-    
 </x-layout>

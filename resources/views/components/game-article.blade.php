@@ -25,9 +25,7 @@ shadow-xl/30 ring">
 <div class="tags-div">
 {{$tags ?? 'no tags available'}}
 </div>
-{{-- <div class="screenshots-div">
-{{$screenshots ?? 'no screenshots available'}}
-</div> --}}
+
 <div class="mt-6 mb-6 border border-blue-800 rounded shadow-xl/10 ring inline-block w-fit" >
 {{$trailer ?? 'no trailer available'}}
 </div>

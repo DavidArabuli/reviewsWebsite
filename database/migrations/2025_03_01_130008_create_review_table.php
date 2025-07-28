@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
-            // $table->foreignId('game_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignIdFor(Game::class)->nullable()->constrained()->nullOnDelete();
             $table->json('screenshots')->nullable();
 

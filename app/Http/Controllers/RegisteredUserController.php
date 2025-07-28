@@ -16,7 +16,7 @@ class RegisteredUserController extends Controller
     }
     public function store()
     {
-        // validate
+
         $attributes = request()->validate([
             'name' => ['required'],
             'email' => ['required', 'email', 'max:254'],
@@ -25,15 +25,14 @@ class RegisteredUserController extends Controller
             'avatar' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048'
 
         ]);
-        // create
+
         if (request()->hasFile('avatar')) {
             $attributes['avatar'] = request()->file('avatar')->store('avatars', 'public');
         }
         $user = User::create($attributes);
-        // login
+
         Auth::login($user);
-        // redirect
+
         return redirect('/reviews');
-        // dd(request()->all());
     }
 }

@@ -22,38 +22,11 @@ class GameController extends Controller
         $steamData = new SteamService($game->steam_id);
         $steamVideoUrl = $steamData->getGameVideo();
         $screenshotsArray = $steamData->screenshotsArray;
-        // $reviewsteam = new SteamService($game->steam_id);
-        // $reviewsteam->getReviewScore();
+
 
         return view('games.show', ['game' => $game, 'steamVideoUrl' => $steamVideoUrl, "screenshotsArray" => $screenshotsArray]);
     }
-    // public function show($id)
-    // {
-    //     $game = Game::findOrFail($id);
-    //     $steamData = new SteamService($game->steam_id);
-    //     $steamVideoUrl = $steamData->getGameVideo();
 
-    //     $screenshots = $steamData->screenshotsArray;
-
-
-    //     $currentPage = request()->get('page', 1);
-    //     $perPage = 3;
-
-
-    //     $pagedScreenshots = new LengthAwarePaginator(
-    //         array_slice($screenshots, ($currentPage - 1) * $perPage, $perPage),
-    //         count($screenshots),
-    //         $perPage,
-    //         $currentPage,
-    //         ['path' => request()->url(), 'query' => request()->query()]
-    //     );
-
-    //     return view('games.show', [
-    //         'game' => $game,
-    //         'steamVideoUrl' => $steamVideoUrl,
-    //         'screenshots' => $pagedScreenshots
-    //     ]);
-    // }
     public function create()
     {
         $allTags = Tag::all();
@@ -69,7 +42,7 @@ class GameController extends Controller
 
         ]);
         $steamData = new SteamService(request('steam_id'));
-        // dd($steamData->reviewScore);
+
         $game = Game::create([
             'title' => request('title'),
             'steam_id' => request('steam_id'),
@@ -79,7 +52,7 @@ class GameController extends Controller
 
         ]);
         $game->tags()->sync($data['tags'] ?? []);
-        // dd($steamData->getLocalImgPath());
+
 
         return redirect('/games');
     }
@@ -91,7 +64,7 @@ class GameController extends Controller
     }
     public function update(Game $game)
     {
-        // dd('hey');
+
         $data = request()->validate([
             'steam_id' => ['required',],
             'title' => ['required'],
@@ -112,8 +85,6 @@ class GameController extends Controller
     public function destroy(Game $game)
     {
         $game->delete();
-
-
 
         return redirect('/games');
     }

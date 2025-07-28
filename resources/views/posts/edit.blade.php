@@ -2,7 +2,7 @@
     <x-slot:heading>
         Edit review {{$post->title}}
     </x-slot:heading>
-   
+
     <form method="POST" action="/posts/{{$post->id}}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
@@ -20,13 +20,6 @@
             @enderror
         </div>
         <div>
-            {{-- <label for="content">content</label>
-            <input 
-            id="content" 
-            name="content" 
-            type="text"
-            value="{{$review->content}}"
-            > --}}
             <input id="content" type="hidden" name="content" value="{{ $post->content }}">
             <trix-editor input="content"></trix-editor>
         </div>
@@ -69,7 +62,7 @@
             function handleScreenshotsChange(input) {
                 const fileList = input.files;
                 const maxFiles = 5;
-                const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+                const maxSize = 2 * 1024 * 1024;
                 const output = document.getElementById('file-chosen');
         
                 if (fileList.length > maxFiles) {
@@ -122,6 +115,4 @@
         @csrf
         @method('DELETE')
     </form>
-       
-    
 </x-layout>

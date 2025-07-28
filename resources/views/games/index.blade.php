@@ -5,15 +5,7 @@
     <article class="flex flex-col items-center">
     <x-page-header>games in our database</x-page-header>
 
-    {{-- <form method="GET" action="{{ route('reviews.index') }}">
-        <label for="sort">Sort by Score:</label>
-        <select name="sort" id="sort" onchange="this.form.submit()">
-            <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>Highest First</option>
-            <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>Lowest First</option>
-        </select>
-    </form> --}}
-
-        @foreach ($games as $game)
+    @foreach ($games as $game)
         <x-game-preview href="/games/{{$game['id']}}">
             <div class = "flex flex-col md:flex-row gap-10 justify-between">
                 <x-title >

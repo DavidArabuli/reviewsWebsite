@@ -14,18 +14,18 @@ class SessionController extends Controller
     }
     public function store()
     {
-        // validate
+
         $attributes = request()->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-        // attempt to login
+
         if (! Auth::attempt($attributes)) {
             throw ValidationException::withMessages([
                 'email' => 'Sorry, those credentials do not match'
             ]);
         };
-        // regenerate session token
+
         request()->session()->regenerate();
 
         return redirect('/reviews');

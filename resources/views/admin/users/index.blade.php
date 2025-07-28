@@ -2,7 +2,6 @@
     <x-slot:heading>
         ALL USERS
     </x-slot:heading>
-    <h1>hello from ALL USERS page</h1>
     <h3>authors and editors</h3>
     
         @foreach ($users as $user)

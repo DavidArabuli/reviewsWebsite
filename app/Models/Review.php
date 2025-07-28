@@ -13,8 +13,7 @@ class Review extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'content', 'user_id', 'score', 'game_id', 'steam_id', 'screenshots'];
-    // to disable all "fillable" protection functionality
-    // protected $guarded = [];
+
     protected $casts = [
         'screenshots' => 'array',
     ];
@@ -28,7 +27,7 @@ class Review extends Model
     }
     public function game()
     {
-        // return $this->belongsTo(Game::class);
+
         return $this->belongsTo(Game::class)->withTrashed();
     }
 }
