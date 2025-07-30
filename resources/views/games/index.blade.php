@@ -27,7 +27,7 @@
         @endforeach
         <div class="m-4">
     
-            @can('edit', $game)
+            @can('create', App\Models\Game::class)
             <x-button href="/games/create">add a new game</x-button>
             @endcan
         </div>
