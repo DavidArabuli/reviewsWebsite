@@ -12,7 +12,7 @@
     
                 <x-title class="mb-3">{{$post->title}}</x-title>
                 <p class="text-base line-clamp-4">
-                        {{ \Illuminate\Support\Str::limit(strip_tags($post['content']), 300) }}
+                        {{ \Illuminate\Support\Str::limit(html_entity_decode(strip_tags($post['content'])), 300) }}
                 </p>
                 @if ($post->screenshots && count($post->screenshots) > 0)
             
