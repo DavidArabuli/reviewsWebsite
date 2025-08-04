@@ -17,6 +17,9 @@ jobs:
         with:
           php-version: '8.3'
 
+      - name: Upload .env file
+        run: echo "${{ secrets.LARAVEL_ENV }}" > .env
+        
       - name: Install PHP dependencies
         run: composer install --no-progress --prefer-dist
 
