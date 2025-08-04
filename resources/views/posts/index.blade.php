@@ -4,7 +4,7 @@
         Home page  user!
     </x-slot:heading>
     <x-page-header>News and Updates</x-page-header>
-    <article class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+    <article class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 bg-amber-400">
 
         @foreach ($posts as $post)
         <x-post-preview href="/posts/{{$post->id}}">
