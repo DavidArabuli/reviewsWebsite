@@ -49,6 +49,7 @@ jobs:
             git reset --hard origin/production
             composer install --no-interaction --prefer-dist --optimize-autoloader
             php artisan migrate --force
+            php artisan db:seed --class=Database\\Seeders\\AdminUserSeeder
             php artisan cache:clear
             php artisan config:cache
             php artisan route:cache
