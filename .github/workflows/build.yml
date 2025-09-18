@@ -30,7 +30,7 @@ jobs:
       - name: Build frontend assets with Vite
         run: npm run build
 
-      - name: Upload .env file (optional, if you want it in GitHub Secrets)
+      - name: Upload .env file
         run: echo "${{ secrets.LARAVEL_ENV }}" > .env
 
       - name: Deploy codebase via SSH
