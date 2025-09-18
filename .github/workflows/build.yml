@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install backend and frontend dependencies
+      - name: Install backend and frontend dependencies.
         run: |
           composer install --no-progress --prefer-dist
           npm install
