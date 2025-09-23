@@ -21,7 +21,7 @@
                 <x-gameImg src="{{ asset('storage/' . $screenshot) }}" alt="Screenshot"></x-gameImg>
             @endforeach
             @else
-            <p>No screenshots available.</p>
+            
             @endif
     </x-slot:screenshots>
     

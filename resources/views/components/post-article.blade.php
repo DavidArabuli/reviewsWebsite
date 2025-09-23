@@ -8,10 +8,10 @@ shadow-xl/30 ring">
     
 </div>
 <div class="screenshots-div">
-    {{$screenshots ?? 'no screenshots available'}}
+    {{$screenshots ?? ''}}
 </div>
 
-<div class="functional-div mt-4 mb-4 border border-amber-600">
+<div class="functional-div mt-4 mb-4">
     {{$functional ?? ''}}
 </div>
 </article>
