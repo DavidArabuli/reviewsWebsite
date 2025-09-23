@@ -7,14 +7,14 @@
 
     @foreach ($games as $game)
         <x-game-preview href="/games/{{$game['id']}}">
-            <div class="flex flex-col md:flex-row gap-10">
-    <x-title class="flex-shrink-0 max-w-[15rem]">
+    <div class="flex flex-col md:flex-row gap-10">
+    <x-title class="flex-shrink min-w-[8rem] max-w-[16rem]">
         <h1 class="break-words">
             {{$game['title']}}
         </h1>
     </x-title>
 
-    <div class="flex-1">
+    <div class="flex-1 min-w-0">
         <p class="text-base line-clamp-4">
             {{$game['description']}}
         </p>
@@ -24,6 +24,7 @@
         <img class="h-28" src="{{asset($game->image_path)}}" alt="steam image">
     </div>
 </div>
+
 
             {{-- <div class = "flex flex-col md:flex-row gap-10 justify-between">
                 <x-title >
