@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:heading>
-        tags page
+        tags
     </x-slot:heading>
     <x-title >
         <h1 class="mt-4 ml-5">All Tags</h1>

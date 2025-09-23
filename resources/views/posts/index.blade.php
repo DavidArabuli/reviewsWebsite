@@ -1,7 +1,7 @@
 <x-layout >
 
     <x-slot:heading>
-        Home page  user!
+        Home
     </x-slot:heading>
     <x-page-header>News and Updates</x-page-header>
     <article class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 bg-amber-400">

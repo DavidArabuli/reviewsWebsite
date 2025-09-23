@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:heading>
-        Reviews page
+        Reviews
     </x-slot:heading>
     <article class="flex flex-col items-center">
     <x-page-header>Check out our games reviews</x-page-header>

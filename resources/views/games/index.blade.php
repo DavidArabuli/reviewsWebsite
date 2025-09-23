@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:heading>
-        Games page
+        Games
     </x-slot:heading>
     <article class="flex flex-col items-center">
     <x-page-header>games in our database</x-page-header>

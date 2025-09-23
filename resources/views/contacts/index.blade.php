@@ -1,7 +1,7 @@
 <x-layout >
 
     <x-slot:heading>
-        Home page user!
+        Contacts
     </x-slot:heading>
     <x-page-header>Contacts and team</x-page-header>
     @if($post)
