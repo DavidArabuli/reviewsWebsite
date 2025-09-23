@@ -29,11 +29,21 @@
         Steam review score:  {{ $game->steam_review_score }}
     </x-slot:steam_review_score>
 
-    <x-slot:steam_id>
+    {{-- <x-slot:steam_id>
         this game`s steam ID is {{ $game->steam_id }}
-    </x-slot:steam_id>
-
+    </x-slot:steam_id> --}}
     <x-slot:trailer>
+    @if ($steamVideoUrl)
+        <video width="640" height="360" controls>
+            <source src="{{ str_replace('http://', 'https://', $steamVideoUrl) }}" type="video/mp4">
+            Does your browser support this video tag?
+        </video>
+    @else
+        <p>No trailer available.</p>    
+    @endif
+</x-slot:trailer>
+
+    {{-- <x-slot:trailer>
         @if ($steamVideoUrl)
         <video width="640" height="360" controls>
             <source src="{{$steamVideoUrl}}" type="video/mp4">
@@ -42,7 +52,7 @@
         @else
         <p>No trailer available.</p>    
         @endif
-    </x-slot:trailer>
+    </x-slot:trailer> --}}
 
     
     <x-slot:swiper>
