@@ -17,9 +17,9 @@ shadow-xl/30 ring">
         {{ $steam_review_score ?? 'No score provided' }}
 
     </div>
-    <div class="steamID-div">
+    {{-- <div class="steamID-div">
     {{ $steam_id ?? 'steam id unknown' }}
-    </div>
+    </div> --}}
 </div>
     
 <div class="tags-div">
