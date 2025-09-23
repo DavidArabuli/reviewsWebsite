@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:heading>
-        Single tag page
+        Tag
     </x-slot:heading>
     
     <div class="ml-5">

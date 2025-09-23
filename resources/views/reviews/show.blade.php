@@ -2,12 +2,12 @@
 
 <x-layout>
     <x-slot:heading>
-        Single review page
+        Review
     </x-slot:heading>
     <x-review-article>
 
         <x-slot:title>
-        This reviews title is {{ $review->title }}
+        {{ $review->title }}
     </x-slot:title>
     <x-slot:steamImage>
         <x-gameImg src="{{asset($image_path)}}" alt="steam image"></x-gameImg>
@@ -18,21 +18,25 @@
     </x-slot:content>
 
     <x-slot:score>
-        This reviews score is {{ $review->score }}
-    </x-slot:score>
+    This review score is 
+    <span class="font-bold text-green-600">{{ $review->score }}</span>
+</x-slot:score>
 
     <x-slot:author>
-    this review’s author is <x-user-link :user="$review->user" />
+    Review`s author is <x-user-link :user="$review->user" />
 </x-slot:author>
     
-    <x-slot:steamID>
+    {{-- <x-slot:steamID>
         this review`s steam ID is {{ $review->steam_id }}
-    </x-slot:steamID>
+    </x-slot:steamID> --}}
 
     <x-slot:otherReviews>
-        Check all of his reviews: 
-        <a href="{{route('profile.show', $user)}}">Check all of his reviews </a>
-    </x-slot:otherReviews>
+   
+    <a href="{{ route('profile.show', $user) }}"
+       class="text-blue-600 hover:underline">
+         See other reviews from this author
+    </a>
+</x-slot:otherReviews>
 
     <x-slot:tags>
         @foreach ($review->tags as $tag)

@@ -13,7 +13,7 @@ shadow-xl/30 ring">
 </div>
 
 <div class="info-block">
-    <div class="mt-2 text-xl font-extrabold text-blue-900 font-mono">
+    <div class="mt-2 mb-2 text-xl font-extrabold text-blue-900 font-mono">
         {{ $steam_review_score ?? 'No score provided' }}
 
     </div>

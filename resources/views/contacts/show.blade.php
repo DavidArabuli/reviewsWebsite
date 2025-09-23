@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:heading>
-        Single post page
+        Post
     </x-slot:heading>
     <x-post-article>
 
