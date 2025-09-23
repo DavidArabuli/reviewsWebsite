@@ -9,7 +9,7 @@
         <x-game-preview href="/games/{{$game['id']}}">
             <div class = "flex flex-col md:flex-row gap-10 justify-between">
                 <x-title >
-                    <h1 class="min-w-[10rem] break-words">
+                    <h1 class="break-words">
                         {{$game['title']}}
                     </h1>
                 </x-title>
